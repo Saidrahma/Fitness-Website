@@ -1,15 +1,15 @@
 <?php
-class Gym{
+class Member{
 
     // database connection and table name
     private $conn;
-    private $table_name = "salle";
+    private $table_name = "membre";
 
     // object properties
-    public $idSalle;
-    public $nameSalle;
-    public $addressSalle;
-    public $townSalle;
+    public $idMembre;
+    public $nameMembre;
+    public $addressMembre;
+    public $DateNais;
 
     // constructor with $db as database connection
     public function __construct($db){
@@ -17,16 +17,16 @@ class Gym{
     }
 
     // ***************************************************** //
-    // read salles
+    // read products
     function read(){
 
         // select all query
         $query = "SELECT
-                     s.idSalle, s.nameSalle, s.addressSalle, s.townSalle
+                     m.idMembre, m.nameMembre, m.addressMembre, m.DateNais
                 FROM
-                    " . $this->table_name . " s
+                    " . $this->table_name . " m
                 ORDER BY
-                    s.idSalle DESC";
+                    m.idMembre DESC";
 
         // prepare query statement
         $stmt = $this->conn->prepare($query);
@@ -38,27 +38,27 @@ class Gym{
     }
 
     // ***************************************************** //
-    // create salle
+    // create product
     function create(){
         // query to insert record
         $query = "INSERT INTO
                     " . $this->table_name . "
                 SET
-                    nameSalle=:nameSalle, addressSalle=:addressSalle, townSalle=:townSalle";
+                    nameMembre=:nameMembre, addressMembre=:addressMembre, DateNais=:DateNais";
 
         // prepare query
         $stmt = $this->conn->prepare($query);
 
         // sanitize
-        $this->nameSalle=htmlspecialchars(strip_tags($this->nameSalle));
-        $this->addressSalle=htmlspecialchars(strip_tags($this->addressSalle));
-        $this->townSalle=htmlspecialchars(strip_tags($this->townSalle));
+        $this->nameMembre=htmlspecialchars(strip_tags($this->nameMembre));
+        $this->addressMembre=htmlspecialchars(strip_tags($this->addressMembre));
+        $this->DateNais=htmlspecialchars(strip_tags($this->DateNais));
 
 
         // bind values
-        $stmt->bindParam(":nameSalle", $this->nameSalle);
-        $stmt->bindParam(":addressSalle", $this->addressSalle);
-        $stmt->bindParam(":townSalle", $this->townSalle);
+        $stmt->bindParam(":nameMembre", $this->nameMembre);
+        $stmt->bindParam(":addressMembre", $this->addressMembre);
+        $stmt->bindParam(":DateNais", $this->DateNais);
 
 
         // execute query
@@ -70,24 +70,24 @@ class Gym{
     }
 
     // ***************************************************** //
-    // used when filling up the update salle form
+    // used when filling up the update product form
     function readOne(){
 
         // query to read single record
         $query = "SELECT
-                     s.idSalle, s.nameSalle, s.addressSalle, s.townSalle
+                     m.idMembre, m.nameMembre, m.addressMembre, m.DateNais
                 FROM
-                    " . $this->table_name . " s
+                    " . $this->table_name . " m
                 WHERE
-                    s.idSalle = ?
+                    m.idMembre = ?
                 LIMIT
                     0,1";
 
         // prepare query statement
         $stmt = $this->conn->prepare( $query );
 
-        // bind id of salle to be updated
-        $stmt->bindParam(1, $this->idSalle);
+        // bind id of product to be updated
+        $stmt->bindParam(1, $this->idMembre);
 
         // execute query
         $stmt->execute();
@@ -96,39 +96,42 @@ class Gym{
         $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
         // set values to object properties
-        $this->nameSalle = $row['nameSalle'];
-        $this->addressSalle = $row['addressSalle'];
-        $this->townSalle = $row['townSalle'];
+        $this->nameMembre = $row['nameMembre'];
+        $this->addressMembre = $row['addressMembre'];
+        $this->DateNais = $row['DateNais'];
+
+        echo $this->nameMembre;
     }
 
     // ***************************************************** //
-    // update the salle
+    // update the product
     function update(){
 
         // update query
         $query = "UPDATE
                     " . $this->table_name . "
                 SET
-                nameSalle = :nameSalle,
-                addressSalle = :addressSalle,
-                townSalle = :townSalle
+                nameMembre = :nameMembre,
+                addressMembre = :addressMembre,
+                DateNais = :DateNais
                 WHERE
-                idSalle = :idSalle";
+                idMembre = :idMembre";
 
         // prepare query statement
         $stmt = $this->conn->prepare($query);
 
         // sanitize
-        $this->nameSalle=htmlspecialchars(strip_tags($this->nameSalle));
-        $this->addressSalle=htmlspecialchars(strip_tags($this->addressSalle));
-        $this->townSalle=htmlspecialchars(strip_tags($this->townSalle));
-        $this->idSalle=htmlspecialchars(strip_tags($this->idSalle));
+        $this->nameMembre=htmlspecialchars(strip_tags($this->nameMembre));
+        $this->addressMembre=htmlspecialchars(strip_tags($this->addressMembre));
+        $this->DateNais=htmlspecialchars(strip_tags($this->DateNais));
+        $this->idMembre=htmlspecialchars(strip_tags($this->idMembre));
 
         // bind new values
-        $stmt->bindParam(':nameSalle', $this->nameSalle);
-        $stmt->bindParam(':addressSalle', $this->addressSalle);
-        $stmt->bindParam(':townSalle', $this->townSalle);
-        $stmt->bindParam(':idSalle', $this->idSalle);
+        $stmt->bindParam(':nameMembre', $this->nameMembre);
+        $stmt->bindParam(':addressMembre', $this->addressMembre);
+        $stmt->bindParam(':DateNais', $this->DateNais);
+        $stmt->bindParam(':idMembre', $this->idMembre);
+
 
         // execute the query
         if($stmt->execute()){
@@ -139,20 +142,20 @@ class Gym{
     }
 
     // ***************************************************** //
-    // delete the salle
+    // delete the product
     function delete(){
 
         // delete query
-        $query = "DELETE FROM " . $this->table_name . " WHERE idSalle = ?";
+        $query = "DELETE FROM " . $this->table_name . " WHERE idMembre = ?";
 
         // prepare query
         $stmt = $this->conn->prepare($query);
 
         // sanitize
-        $this->idSalle=htmlspecialchars(strip_tags($this->idSalle));
+        $this->idMembre=htmlspecialchars(strip_tags($this->idMembre));
 
         // bind id of record to delete
-        $stmt->bindParam(1, $this->idSalle);
+        $stmt->bindParam(1, $this->idMembre);
 
         // execute query
         if($stmt->execute()){

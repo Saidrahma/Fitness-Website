@@ -6,26 +6,26 @@ header("Content-Type: application/json; charset=UTF-8");
 // database connection will be here
 // include database and object files
 include_once '../../config/database.php';
-include_once '../../models/gym/gym.php';
+include_once '../../models/member/member.php';
 
-// instantiate database and gym object
+// instantiate database and member object
 $database = new Database();
 $db = $database->getConnection();
 
 // initialize object
-$gym = new Gym($db);
+$member = new Member($db);
 
-// read gyms will be here
-// query gyms
-$stmt = $gym->read();
+// read members will be here
+// query members
+$stmt = $member->read();
 $num = $stmt->rowCount();
 
 // check if more than 0 record found
 if($num>0){
 
-    // gyms array
-    $gyms_arr=array();
-    $gyms_arr["records"]=array();
+    // members array
+    $members_arr=array();
+    $members_arr["records"]=array();
 
     // retrieve our table contents
     // fetch() is faster than fetchAll()
@@ -36,21 +36,21 @@ if($num>0){
         // just $name only
         extract($row);
 
-        $gym_item=array(
-            "idSalle" => $idSalle,
-            "nameSalle" => $nameSalle,
-            "addressSalle" => $addressSalle,
-            "townSalle" => $townSalle,
+        $member_item=array(
+            "idMembre" => $idMembre,
+            "nameMembre" => $nameMembre,
+            "addressMembre" => $addressMembre,
+            "DateNais" => $DateNais,
         );
 
-        array_push($gyms_arr["records"], $gym_item);
+        array_push($members_arr["records"], $member_item);
     }
 
     // set response code - 200 OK
     http_response_code(200);
 
-    // show gyms data in json format
-    echo json_encode($gyms_arr);
+    // show members data in json format
+    echo json_encode($members_arr);
 } else{
 
     // set response code - 404 Not found
@@ -58,8 +58,8 @@ if($num>0){
 
     // tell the user no products found
     echo json_encode(
-        array("message" => "No salle found.")
+        array("message" => "No Member found.")
     );
 }
 
-// no gyms found will be here
+// no members found will be here

@@ -7,46 +7,41 @@ header("Access-Control-Max-Age: 3600");
 header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
 
 include_once '../../config/database.php';
-include_once '../../models/gym/gym.php';
+include_once '../../models/activity_type/activity_type.php';
 
 $database = new Database();
 $db = $database->getConnection();
 
-$gym = new Gym($db);
+$activityType = new ActivityType($db);
 
 // get posted data
 $data = json_decode(file_get_contents("php://input"));
 
 // make sure data is not empty
 if(
-    !empty($data->nameSalle) &&
-    !empty($data->addressSalle) &&
-    !empty($data->townSalle)
+    !empty($data->nameType)
 ){
 
-    // set gym property values
-    $gym->nameSalle = $data->nameSalle;
-    $gym->addressSalle = $data->addressSalle;
-    $gym->townSalle = $data->townSalle;
+    // set activityType property values
+    $activityType->nameType = $data->nameType;
 
-    // create the gym
-    if($gym->create()){
+    // create the activityType
+    if($activityType->create()){
 
         // set response code - 201 created
         http_response_code(201);
 
         // tell the user
-        echo json_encode(array("message" => "gym was created."));
+        echo json_encode(array("message" => "activityType was created."));
     }
 
-    // if unable to create the gym, tell the user
+    // if unable to create the activityType, tell the user
     else{
-
         // set response code - 503 service unavailable
         http_response_code(503);
 
         // tell the user
-        echo json_encode(array("message" => "Unable to create gym."));
+        echo json_encode(array("message" => "Unable to create activityType."));
     }
 }
 
@@ -57,6 +52,6 @@ else{
     http_response_code(400);
 
     // tell the user
-    echo json_encode(array("message" => "Unable to create gym. Data is incomplete."));
+    echo json_encode(array("message" => "Unable to create activityType. Data is incomplete."));
 }
 ?>

@@ -1,15 +1,16 @@
 <?php
-class Gym{
+class Activity{
 
     // database connection and table name
     private $conn;
-    private $table_name = "salle";
+    private $table_name = "activity";
 
     // object properties
-    public $idSalle;
-    public $nameSalle;
-    public $addressSalle;
-    public $townSalle;
+    public $idActivity;
+    public $nameActivity;
+    public $description;
+    public $idDay;
+    public $idActType;
 
     // constructor with $db as database connection
     public function __construct($db){
@@ -22,11 +23,11 @@ class Gym{
 
         // select all query
         $query = "SELECT
-                     s.idSalle, s.nameSalle, s.addressSalle, s.townSalle
+                     a.idActivity, a.nameActivity, a.description, a.idDay, a.idActType
                 FROM
-                    " . $this->table_name . " s
+                    " . $this->table_name . " a
                 ORDER BY
-                    s.idSalle DESC";
+                    a.idActivity DESC";
 
         // prepare query statement
         $stmt = $this->conn->prepare($query);
@@ -44,21 +45,23 @@ class Gym{
         $query = "INSERT INTO
                     " . $this->table_name . "
                 SET
-                    nameSalle=:nameSalle, addressSalle=:addressSalle, townSalle=:townSalle";
+                    nameActivity=:nameActivity, description=:description, idDay=:idDay, idActType=:idActType";
 
         // prepare query
         $stmt = $this->conn->prepare($query);
 
         // sanitize
-        $this->nameSalle=htmlspecialchars(strip_tags($this->nameSalle));
-        $this->addressSalle=htmlspecialchars(strip_tags($this->addressSalle));
-        $this->townSalle=htmlspecialchars(strip_tags($this->townSalle));
+        $this->nameActivity=htmlspecialchars(strip_tags($this->nameActivity));
+        $this->description=htmlspecialchars(strip_tags($this->description));
+        $this->idDay=htmlspecialchars(strip_tags($this->idDay));
+        $this->idActType=htmlspecialchars(strip_tags($this->idActType));
 
 
         // bind values
-        $stmt->bindParam(":nameSalle", $this->nameSalle);
-        $stmt->bindParam(":addressSalle", $this->addressSalle);
-        $stmt->bindParam(":townSalle", $this->townSalle);
+        $stmt->bindParam(":nameActivity", $this->nameActivity);
+        $stmt->bindParam(":description", $this->description);
+        $stmt->bindParam(":idDay", $this->idDay);
+        $stmt->bindParam(":idActType", $this->idActType);
 
 
         // execute query
@@ -75,11 +78,11 @@ class Gym{
 
         // query to read single record
         $query = "SELECT
-                     s.idSalle, s.nameSalle, s.addressSalle, s.townSalle
+                     a.idActivity, a.nameActivity, a.description, a.idDay, a.idActType
                 FROM
-                    " . $this->table_name . " s
+                    " . $this->table_name . " a
                 WHERE
-                    s.idSalle = ?
+                    a.idActivity = ?
                 LIMIT
                     0,1";
 
@@ -87,7 +90,7 @@ class Gym{
         $stmt = $this->conn->prepare( $query );
 
         // bind id of salle to be updated
-        $stmt->bindParam(1, $this->idSalle);
+        $stmt->bindParam(1, $this->idActivity);
 
         // execute query
         $stmt->execute();
@@ -96,9 +99,10 @@ class Gym{
         $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
         // set values to object properties
-        $this->nameSalle = $row['nameSalle'];
-        $this->addressSalle = $row['addressSalle'];
-        $this->townSalle = $row['townSalle'];
+        $this->nameActivity = $row['nameActivity'];
+        $this->description = $row['description'];
+        $this->idDay = $row['idDay'];
+        $this->idActType = $row['idActType'];
     }
 
     // ***************************************************** //
@@ -109,26 +113,29 @@ class Gym{
         $query = "UPDATE
                     " . $this->table_name . "
                 SET
-                nameSalle = :nameSalle,
-                addressSalle = :addressSalle,
-                townSalle = :townSalle
+                nameActivity = :nameActivity,
+                description = :description,
+                idDay = :idDay,
+                idActType =: idActType
                 WHERE
-                idSalle = :idSalle";
+                idActivity = :idActivity";
 
         // prepare query statement
         $stmt = $this->conn->prepare($query);
 
         // sanitize
-        $this->nameSalle=htmlspecialchars(strip_tags($this->nameSalle));
-        $this->addressSalle=htmlspecialchars(strip_tags($this->addressSalle));
-        $this->townSalle=htmlspecialchars(strip_tags($this->townSalle));
-        $this->idSalle=htmlspecialchars(strip_tags($this->idSalle));
+        $this->nameActivity=htmlspecialchars(strip_tags($this->nameActivity));
+        $this->description=htmlspecialchars(strip_tags($this->description));
+        $this->idDay=htmlspecialchars(strip_tags($this->idDay));
+        $this->idActType=htmlspecialchars(strip_tags($this->idActType));
+        $this->idActivity=htmlspecialchars(strip_tags($this->idActivity));
 
         // bind new values
-        $stmt->bindParam(':nameSalle', $this->nameSalle);
-        $stmt->bindParam(':addressSalle', $this->addressSalle);
-        $stmt->bindParam(':townSalle', $this->townSalle);
-        $stmt->bindParam(':idSalle', $this->idSalle);
+        $stmt->bindParam(':nameActivity', $this->nameActivity);
+        $stmt->bindParam(':description', $this->description);
+        $stmt->bindParam(':idDay', $this->idDay);
+        $stmt->bindParam(':idActType', $this->idActType);
+        $stmt->bindParam(':idActivity', $this->idActivity);
 
         // execute the query
         if($stmt->execute()){
@@ -143,16 +150,16 @@ class Gym{
     function delete(){
 
         // delete query
-        $query = "DELETE FROM " . $this->table_name . " WHERE idSalle = ?";
+        $query = "DELETE FROM " . $this->table_name . " WHERE idActivity = ?";
 
         // prepare query
         $stmt = $this->conn->prepare($query);
 
         // sanitize
-        $this->idSalle=htmlspecialchars(strip_tags($this->idSalle));
+        $this->idActivity=htmlspecialchars(strip_tags($this->idActivity));
 
         // bind id of record to delete
-        $stmt->bindParam(1, $this->idSalle);
+        $stmt->bindParam(1, $this->idActivity);
 
         // execute query
         if($stmt->execute()){
