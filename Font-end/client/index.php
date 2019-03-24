@@ -54,7 +54,13 @@
 
 	</head>
 	<body>
-		
+		<?php
+		include_once "./scripts/callApi.php";
+		$get_data = callAPI('GET', 'http://localhost/Gym-Website/Back-end/api/controllers/activity/read.php', false);
+		$response = json_decode($get_data, true);
+		$data = $response['records'];
+		var_dump($data);
+		?>
 	<div class="colorlib-loader"></div>
 
 	<div id="page">
@@ -71,12 +77,19 @@
 								<li class="has-dropdown">
 									<a href="classes.html">Classes</a>
 									<ul class="dropdown">
-										<li><a href="classes-single.html">Classes Single</a></li>
-										<li><a href="#">Cardio Classes</a></li>
-										<li><a href="#">Muscle Classes</a></li>
+									<?php
+												for($i = 0; $i<count($data); $i++) {
+													?>
+										<li><a href="#">
+											<?php
+													print_r($data[$i]['nameActivity']);
+												}
+											?>
+										</a></li>
+										<!-- <li><a href="#">Muscle Classes</a></li>
 										<li><a href="#">Fitness Classes</a></li>
 										<li><a href="#">Body Building</a></li>
-										<li><a href="#">Kids Classes</a></li>
+										<li><a href="#">Kids Classes</a></li> -->
 									</ul>
 								</li>
 								<li><a href="schedule.html">Schedule</a></li>
