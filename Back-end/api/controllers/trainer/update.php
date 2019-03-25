@@ -8,46 +8,43 @@ header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers
 
 // include database and object files
 include_once '../../config/database.php';
-include_once '../../models/activity/activity.php';
+include_once '../../models/trainer/trainer.php';
 
 // get database connection
 $database = new Database();
 $db = $database->getConnection();
 
-// prepare activity object
-$activity = new Activity($db);
+// prepare trainer object
+$trainer = new Trainer($db);
 
-// get id of activity to be edited
+// get id of trainer to be edited
 $data = json_decode(file_get_contents("php://input"));
 
-// set ID property of activity to be edited
-$activity->idActivity = $data->idActivity;
+// set ID property of trainer to be edited
+$trainer->idTrainer = $data->idTrainer;
 
-// set activity property values
-$activity->nameActivity = $data->nameActivity;
-$activity->description = $data->description;
-$activity->idDay = $data->idDay;
-$activity->idActType = $data->idActType;
-$activity->idTrainer = $data->idTrainer;
+// set trainer property values
+$trainer->nameTrainer = $data->nameTrainer;
+$trainer->addressTrainer = $data->addressTrainer;
 
 
-// update the activity
-if($activity->update()){
+// update the trainer
+if($trainer->update()){
 
     // set response code - 200 ok
     http_response_code(200);
 
     // tell the user
-    echo json_encode(array("message" => "activity was updated."));
+    echo json_encode(array("message" => "trainer was updated."));
 }
 
-// if unable to update the activity, tell the user
+// if unable to update the trainer, tell the user
 else{
 
     // set response code - 503 service unavailable
     http_response_code(503);
 
     // tell the user
-    echo json_encode(array("message" => "Unable to update activity."));
+    echo json_encode(array("message" => "Unable to update trainer."));
 }
 ?>

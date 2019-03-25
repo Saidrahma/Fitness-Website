@@ -7,48 +7,44 @@ header("Access-Control-Max-Age: 3600");
 header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
 
 include_once '../../config/database.php';
-include_once '../../models/subscribe/subscribe.php';
+include_once '../../models/trainer/trainer.php';
 
 $database = new Database();
 $db = $database->getConnection();
 
-$subscribe = new Subscribe($db);
+$trainer = new Trainer($db);
 
 // get posted data
 $data = json_decode(file_get_contents("php://input"));
 
 // make sure data is not empty
 if(
-    !empty($data->idMember) &&
-    !empty($data->idSubType) &&
-    !empty($data->dateDebut) &&
-    !empty($data->dateFin)
+    !empty($data->nameTrainer) &&
+    !empty($data->addressTrainer)
 ){
 
-    // set subscribe property values
-    $subscribe->idMember = $data->idMember;
-    $subscribe->idSubType = $data->idSubType;
-    $subscribe->dateDebut = $data->dateDebut;
-    $subscribe->dateFin = $data->dateFin;
+    // set trainer property values
+    $trainer->nameTrainer = $data->nameTrainer;
+    $trainer->addressTrainer = $data->addressTrainer;
 
-    // create the subscribe
-    if($subscribe->create()){
+    // create the trainer
+    if($trainer->create()){
 
         // set response code - 201 created
         http_response_code(201);
 
         // tell the user
-        echo json_encode(array("message" => "subscribe was created."));
+        echo json_encode(array("message" => "trainer was created."));
     }
 
-    // if unable to create the subscribe, tell the user
+    // if unable to create the trainer, tell the user
     else{
 
         // set response code - 503 service unavailable
         http_response_code(503);
 
         // tell the user
-        echo json_encode(array("message" => "Unable to create subscribe."));
+        echo json_encode(array("message" => "Unable to create trainer."));
     }
 }
 
@@ -59,6 +55,6 @@ else{
     http_response_code(400);
 
     // tell the user
-    echo json_encode(array("message" => "Unable to create subscribe. Data is incomplete."));
+    echo json_encode(array("message" => "Unable to create trainer. Data is incomplete."));
 }
 ?>

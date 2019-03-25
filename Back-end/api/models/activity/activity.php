@@ -11,6 +11,7 @@ class Activity{
     public $description;
     public $idDay;
     public $idActType;
+    public $idTrainer;
 
     // constructor with $db as database connection
     public function __construct($db){
@@ -23,7 +24,7 @@ class Activity{
 
         // select all query
         $query = "SELECT
-                     a.idActivity, a.nameActivity, a.description, a.idDay, a.idActType
+                     a.idActivity, a.nameActivity, a.description, a.idDay, a.idActType, a.idTrainer
                 FROM
                     " . $this->table_name . " a
                 ORDER BY
@@ -45,7 +46,7 @@ class Activity{
         $query = "INSERT INTO
                     " . $this->table_name . "
                 SET
-                    nameActivity=:nameActivity, description=:description, idDay=:idDay, idActType=:idActType";
+                    nameActivity=:nameActivity, description=:description, idDay=:idDay, idActType=:idActType,  idTrainer=:idTrainer";
 
         // prepare query
         $stmt = $this->conn->prepare($query);
@@ -55,6 +56,7 @@ class Activity{
         $this->description=htmlspecialchars(strip_tags($this->description));
         $this->idDay=htmlspecialchars(strip_tags($this->idDay));
         $this->idActType=htmlspecialchars(strip_tags($this->idActType));
+        $this->idTrainer=htmlspecialchars(strip_tags($this->idTrainer));
 
 
         // bind values
@@ -62,6 +64,7 @@ class Activity{
         $stmt->bindParam(":description", $this->description);
         $stmt->bindParam(":idDay", $this->idDay);
         $stmt->bindParam(":idActType", $this->idActType);
+        $stmt->bindParam(":idTrainer", $this->idTrainer);
 
 
         // execute query
@@ -78,7 +81,7 @@ class Activity{
 
         // query to read single record
         $query = "SELECT
-                     a.idActivity, a.nameActivity, a.description, a.idDay, a.idActType
+                     a.idActivity, a.nameActivity, a.description, a.idDay, a.idActType, a.idTrainer
                 FROM
                     " . $this->table_name . " a
                 WHERE
@@ -103,6 +106,7 @@ class Activity{
         $this->description = $row['description'];
         $this->idDay = $row['idDay'];
         $this->idActType = $row['idActType'];
+        $this->idTrainer = $row['idTrainer'];
     }
 
     // ***************************************************** //
@@ -116,7 +120,8 @@ class Activity{
                 nameActivity = :nameActivity,
                 description = :description,
                 idDay = :idDay,
-                idActType =: idActType
+                idActType =: idActType,
+                idTrainer =: idTrainer
                 WHERE
                 idActivity = :idActivity";
 
@@ -129,6 +134,7 @@ class Activity{
         $this->idDay=htmlspecialchars(strip_tags($this->idDay));
         $this->idActType=htmlspecialchars(strip_tags($this->idActType));
         $this->idActivity=htmlspecialchars(strip_tags($this->idActivity));
+        $this->idTrainer=htmlspecialchars(strip_tags($this->idTrainer));
 
         // bind new values
         $stmt->bindParam(':nameActivity', $this->nameActivity);
@@ -136,6 +142,7 @@ class Activity{
         $stmt->bindParam(':idDay', $this->idDay);
         $stmt->bindParam(':idActType', $this->idActType);
         $stmt->bindParam(':idActivity', $this->idActivity);
+        $stmt->bindParam(':idTrainer', $this->idTrainer);
 
         // execute the query
         if($stmt->execute()){

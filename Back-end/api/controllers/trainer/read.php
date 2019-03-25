@@ -6,26 +6,26 @@ header("Content-Type: application/json; charset=UTF-8");
 // database connection will be here
 // include database and object files
 include_once '../../config/database.php';
-include_once '../../models/subscribe/subscribe.php';
+include_once '../../models/trainer/trainer.php';
 
-// instantiate database and subscribe object
+// instantiate database and trainer object
 $database = new Database();
 $db = $database->getConnection();
 
 // initialize object
-$subscribe = new Subscribe($db);
+$trainer = new Trainer($db);
 
-// read subscribes will be here
-// query subscribes
-$stmt = $subscribe->read();
+// read trainers will be here
+// query trainers
+$stmt = $trainer->read();
 $num = $stmt->rowCount();
 
 // check if more than 0 record found
 if($num>0){
 
-    // subscribes array
-    $subscribes_arr=array();
-    $subscribes_arr["records"]=array();
+    // trainers array
+    $trainers_arr=array();
+    $trainers_arr["records"]=array();
 
     // retrieve our table contents
     // fetch() is faster than fetchAll()
@@ -36,21 +36,20 @@ if($num>0){
         // just $name only
         extract($row);
 
-        $subscribe_item=array(
-            "idMember" => $idMember,
-            "idSubType" => $idSubType,
-            "dateDebut" => $dateDebut,
-            "dateFin" => $dateFin,
+        $trainer_item=array(
+            "idTrainer" => $idTrainer,
+            "nameTrainer" => $nameTrainer,
+            "addressTrainer" => $addressTrainer,
         );
 
-        array_push($subscribes_arr["records"], $subscribe_item);
+        array_push($trainers_arr["records"], $trainer_item);
     }
 
     // set response code - 200 OK
     http_response_code(200);
 
-    // show subscribes data in json format
-    echo json_encode($subscribes_arr);
+    // show trainers data in json format
+    echo json_encode($trainers_arr);
 } else{
 
     // set response code - 404 Not found
@@ -58,8 +57,8 @@ if($num>0){
 
     // tell the user no products found
     echo json_encode(
-        array("message" => "No subscribe found.")
+        array("message" => "No trainer type found.")
     );
 }
 
-// no subscribes found will be here
+// no trainers found will be here
