@@ -8,39 +8,38 @@ header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers
 
 // include database and object file
 include_once '../../config/database.php';
-include_once '../../models/subscribe/subscribe.php';
+include_once '../../models/trainer/trainer.php';
 
 // get database connection
 $database = new Database();
 $db = $database->getConnection();
 
-// prepare subscribe object
-$subscribe = new Subscribe($db);
+// prepare trainer object
+$trainer = new Trainer($db);
 
-// get subscribe id
+// get trainer id
 $data = json_decode(file_get_contents("php://input"));
 
-// set subscribe id to be deleted
-$subscribe->idSubType = $data->idSubType;
-$subscribe->idMember = $data->idMember;
+// set trainer id to be deleted
+$trainer->idTrainer = $data->idTrainer;
 
-// delete the subscribe
-if($subscribe->delete()){
+// delete the trainer
+if($trainer->delete()){
 
     // set response code - 200 ok
     http_response_code(200);
 
     // tell the user
-    echo json_encode(array("message" => "subscribe was deleted."));
+    echo json_encode(array("message" => "trainer was deleted."));
 }
 
-// if unable to delete the subscribe
+// if unable to delete the trainer
 else{
 
     // set response code - 503 service unavailable
     http_response_code(503);
 
     // tell the user
-    echo json_encode(array("message" => "Unable to delete subscribe."));
+    echo json_encode(array("message" => "Unable to delete trainer."));
 }
 ?>

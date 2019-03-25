@@ -42,6 +42,7 @@ if($num>0){
             "description" => $description,
             "idDay" => $idDay,
             "idActType" => $idActType,
+            "idTrainer" => $idTrainer,
         );
 
         array_push($activitys_arr["records"], $activity_item);

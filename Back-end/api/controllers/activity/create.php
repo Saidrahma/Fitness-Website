@@ -22,7 +22,8 @@ if(
     !empty($data->nameActivity) &&
     !empty($data->description) &&
     !empty($data->idDay) &&
-    !empty($data->idActType)
+    !empty($data->idActType)&&
+    !empty($data->idTrainer)
 ){
 
     // set activity property values
@@ -30,6 +31,7 @@ if(
     $activity->description = $data->description;
     $activity->idDay = $data->idDay;
     $activity->idActType = $data->idActType;
+    $activity->idTrainer = $data->idTrainer;
 
     // create the activity
     if($activity->create()){

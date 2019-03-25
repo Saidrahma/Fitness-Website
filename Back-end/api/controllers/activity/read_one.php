@@ -31,6 +31,7 @@ if($activity->nameActivity!=null){
         "description" => $activity->description,
         "idDay" => $activity->idDay,
         "idActType" => $activity->idActType,
+        "idTrainer" => $activity->idTrainer,
     );
 
     // set response code - 200 OK

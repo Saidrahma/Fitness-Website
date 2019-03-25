@@ -1,15 +1,14 @@
 <?php
-class Subscribe{
+class Trainer{
 
     // database connection and table name
     private $conn;
-    private $table_name = "subscribe";
+    private $table_name = "trainer";
 
     // object properties
-    public $idMember;
-    public $idSubType;
-    public $dateDebut;
-    public $dateFin;
+    public $idTrainer;
+    public $nameTrainer;
+    public $addressTrainer;
 
     // constructor with $db as database connection
     public function __construct($db){
@@ -22,9 +21,11 @@ class Subscribe{
 
         // select all query
         $query = "SELECT
-                     s.idMember, s.idSubType, s.dateDebut, s.dateFin
+                     s.idTrainer, s.nameTrainer, s.addressTrainer
                 FROM
-                    " . $this->table_name . " s";
+                    " . $this->table_name . " s
+                ORDER BY
+                    s.idTrainer DESC";
 
         // prepare query statement
         $stmt = $this->conn->prepare($query);
@@ -42,23 +43,19 @@ class Subscribe{
         $query = "INSERT INTO
                     " . $this->table_name . "
                 SET
-                idMember=:idMember, idSubType=:idSubType,  dateDebut=:dateDebut, dateFin=:dateFin";
+                    nameTrainer=:nameTrainer, addressTrainer=:addressTrainer";
 
         // prepare query
         $stmt = $this->conn->prepare($query);
 
         // sanitize
-        $this->idMember=htmlspecialchars(strip_tags($this->idMember));
-        $this->idSubType=htmlspecialchars(strip_tags($this->idSubType));
-        $this->dateDebut=htmlspecialchars(strip_tags($this->dateDebut));
-        $this->dateFin=htmlspecialchars(strip_tags($this->dateFin));
+        $this->nameTrainer=htmlspecialchars(strip_tags($this->nameTrainer));
+        $this->addressTrainer=htmlspecialchars(strip_tags($this->addressTrainer));
 
 
         // bind values
-        $stmt->bindParam(":idMember", $this->idMember);
-        $stmt->bindParam(":idSubType", $this->idSubType);
-        $stmt->bindParam(":dateDebut", $this->dateDebut);
-        $stmt->bindParam(":dateFin", $this->dateFin);
+        $stmt->bindParam(":nameTrainer", $this->nameTrainer);
+        $stmt->bindParam(":addressTrainer", $this->addressTrainer);
 
 
         // execute query
@@ -75,11 +72,11 @@ class Subscribe{
 
         // query to read single record
         $query = "SELECT
-                     s.dateDebut, s.dateFin
+                     s.idTrainer, s.nameTrainer, s.addressTrainer
                 FROM
                     " . $this->table_name . " s
                 WHERE
-                    s.idMember = ?
+                    s.idTrainer = ?
                 LIMIT
                     0,1";
 
@@ -87,13 +84,17 @@ class Subscribe{
         $stmt = $this->conn->prepare( $query );
 
         // bind id of salle to be updated
-        $stmt->bindParam(1, $this->idMember);
+        $stmt->bindParam(1, $this->idTrainer);
 
         // execute query
         $stmt->execute();
 
         // get retrieved row
-        return $stmt;
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        // set values to object properties
+        $this->nameTrainer = $row['nameTrainer'];
+        $this->addressTrainer = $row['addressTrainer'];
     }
 
     // ***************************************************** //
@@ -104,24 +105,24 @@ class Subscribe{
         $query = "UPDATE
                     " . $this->table_name . "
                 SET
-                dateDebut = :dateDebut,
-                dateFin = :dateFin
+                nameTrainer = :nameTrainer,
+                addressTrainer = :addressTrainer
                 WHERE
-                idMember = :idMember AND idSubType = :idSubType";
+                idTrainer = :idTrainer";
 
         // prepare query statement
         $stmt = $this->conn->prepare($query);
 
         // sanitize
-        $this->dateDebut=htmlspecialchars(strip_tags($this->dateDebut));
-        $this->dateFin=htmlspecialchars(strip_tags($this->dateFin));
-        $this->idMember=htmlspecialchars(strip_tags($this->idMember));
-        $this->idSubType=htmlspecialchars(strip_tags($this->idSubType));
+        $this->nameTrainer=htmlspecialchars(strip_tags($this->nameTrainer));
+        $this->addressTrainer=htmlspecialchars(strip_tags($this->addressTrainer));
+        $this->idTrainer=htmlspecialchars(strip_tags($this->idTrainer));
+
         // bind new values
-        $stmt->bindParam(':dateDebut', $this->dateDebut);
-        $stmt->bindParam(':dateFin', $this->dateFin);
-        $stmt->bindParam(':idMember', $this->idMember);
-        $stmt->bindParam(':idSubType', $this->idSubType);
+        $stmt->bindParam(':nameTrainer', $this->nameTrainer);
+        $stmt->bindParam(':addressTrainer', $this->addressTrainer);
+        $stmt->bindParam(':idTrainer', $this->idTrainer);
+
         // execute the query
         if($stmt->execute()){
             return true;
@@ -135,18 +136,16 @@ class Subscribe{
     function delete(){
 
         // delete query
-        $query = "DELETE FROM " . $this->table_name . " WHERE idMember=:idMember AND idSubType=:idSubType";
+        $query = "DELETE FROM " . $this->table_name . " WHERE idTrainer = ?";
 
         // prepare query
         $stmt = $this->conn->prepare($query);
 
         // sanitize
-        $this->idMember=htmlspecialchars(strip_tags($this->idMember));
-        $this->idSubType=htmlspecialchars(strip_tags($this->idSubType));
+        $this->idTrainer=htmlspecialchars(strip_tags($this->idTrainer));
 
         // bind id of record to delete
-        $stmt->bindParam(":idMember", $this->idMember);
-        $stmt->bindParam(":idSubType", $this->idSubType);
+        $stmt->bindParam(1, $this->idTrainer);
 
         // execute query
         if($stmt->execute()){
