@@ -54,7 +54,7 @@
 
 	</head>
 	<body>
-		
+
 	<div class="colorlib-loader"></div>
 
 	<div id="page">
@@ -63,11 +63,11 @@
 				<div class="container">
 					<div class="row">
 						<div class="col-md-2">
-							<div id="colorlib-logo"><a href="index.html">Fitness Club</a></div>
+							<div id="colorlib-logo"><a href="index.php">Fitness Club</a></div>
 						</div>
 						<div class="col-md-10 text-right menu-1">
 							<ul>
-								<li><a href="index.html">Home</a></li>
+								<li><a href="index.php">Home</a></li>
 								<li class="has-dropdown">
 									<a href="classes.html">Classes</a>
 									<ul class="dropdown">
@@ -82,7 +82,7 @@
 								<li><a href="schedule.html">Schedule</a></li>
 								<li><a href="about.html">Trainers</a></li>
 								<li><a href="deals.html">Deals</a></li>
-								<li class="active"><a href="account.html">Account</a></li>
+								<li class="active"><a href="account.php">Account</a></li>
 								<li><a href="contact.html">Contact</a></li>
 							</ul>
 						</div>
@@ -100,7 +100,7 @@
 				   			<div class="col-md-6 col-sm-12 col-md-offset-3 slider-text">
 				   				<div class="slider-text-inner text-center">
 				   					<h1>Account</h1>
-				   					<h2><span><a href="index.html">Home</a> | Account</span></h2>
+				   					<h2><span><a href="index.php">Home</a> | Account</span></h2>
 				   				</div>
 				   			</div>
 				   		</div>
@@ -114,74 +114,13 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-md-7 animate-box">
-						<h2>Subscribe to join our classes</h2>
-						<form action="#">
-							<div class="row form-group">
-								<div class="col-md-6">
-									<!-- <label for="fname">First Name</label> -->
-									<input type="text" id="fname" class="form-control" placeholder="First Name">
-								</div>
-								<div class="col-md-6">
-									<!-- <label for="lname">Last Name</label> -->
-									<input type="text" id="lname" class="form-control" placeholder="Last Name">
-								</div>
-							</div>
-
-							<div class="row form-group">
-								<div class="col-md-12">
-									<!-- <label for="email">Email</label> -->
-									<input type="text" id="address" class="form-control" placeholder="Address">
-								</div>
-							</div>
-
-							<div class="row form-group">
-								<div class="col-md-12">
-									<!-- <label for="email">Email</label> -->
-									<input type="email" id="email" class="form-control" placeholder="Email">
-								</div>
-							</div>
-
-							<div class="row form-group">
-								<div class="col-md-12">
-									<!-- <label for="subject">Subject</label> -->
-									<input type="tel" id="tel" class="form-control" placeholder="Phone Number">
-								</div>
-							</div>
-
-							<div class="form-group" style="align-center">
-								<input type="submit" value="Proceed to Payment" class="btn btn-primary">
-							</div>
-						</form>		
+					<a href="register.php" class="btn btn-primary btn-lg btn-learn">Register</a>
 					</div>
 
 					<div class="col-md-5 animate-box">
-						<h2>Sign In</h2>
-						<form action="#">
-							<div class="row form-group">
-								<div class="col-md-6">
-									<!-- <label for="fname">First Name</label> -->
-									<input type="text" id="fname" class="form-control" placeholder="First Name">
-								</div>
-								<div class="col-md-6">
-									<!-- <label for="lname">Last Name</label> -->
-									<input type="text" id="lname" class="form-control" placeholder="Last Name">
-								</div>
-							</div>
-
-							<div class="row form-group">
-								<div class="col-md-12">
-									<!-- <label for="email">Email</label> -->
-									<input type="text" id="cardRefNum" class="form-control" placeholder="Card Reference Number">
-								</div>
-							</div>
-
-							<div class="form-group" style="align-center">
-								<input type="submit" value="Sign In" class="btn btn-primary">
-							</div>
-						</form>		
+					<a href="login.php" class="btn btn-primary btn-lg btn-learn">Login</a>
 					</div>
 				</div>
-				
 			</div>
 		</div>
 

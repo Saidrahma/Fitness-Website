@@ -69,11 +69,11 @@
 				<div class="container">
 					<div class="row">
 						<div class="col-md-2">
-							<div id="colorlib-logo"><a href="index.html">Fitness Club</a></div>
+							<div id="colorlib-logo"><a href="index.php">Fitness Club</a></div>
 						</div>
 						<div class="col-md-10 text-right menu-1">
 							<ul>
-								<li class="active"><a href="index.html">Home</a></li>
+								<li class="active"><a href="index.php">Home</a></li>
 								<li class="has-dropdown">
 									<a href="classes.html">Classes</a>
 									<ul class="dropdown">
@@ -95,7 +95,7 @@
 								<li><a href="schedule.html">Schedule</a></li>
 								<li><a href="about.html">Trainers</a></li>
 								<li><a href="deals.html">Deals</a></li>
-								<li><a href="account.html">Account</a></li>
+								<li><a href="account.php">Account</a></li>
 								<li><a href="contact.html">Contact</a></li>
 							</ul>
 						</div>
@@ -113,7 +113,7 @@
 				   			<div class="col-md-6 col-sm-12 col-md-offset-3 slider-text">
 				   				<div class="slider-text-inner text-center">
 				   					<h1>This is a Lifestyle There is no Finish Line</h1>
-				   					<p><a href="account.html" class="btn btn-primary btn-lg btn-learn">Join Classes</a></p>
+				   					<p><a href="account.php" class="btn btn-primary btn-lg btn-learn">Join Classes</a></p>
 				   				</div>
 				   			</div>
 				   		</div>
@@ -126,7 +126,7 @@
 				   			<div class="col-md-8 col-sm-12 col-md-offset-2 slider-text">
 				   				<div class="slider-text-inner text-center">
 				   					<h1>Don't Stop When it Hurts, Stop When You're Done</h1>
-				   					<p><a href="account.html" class="btn btn-primary btn-lg btn-learn">Join Classes</a></p>
+				   					<p><a href="account.php" class="btn btn-primary btn-lg btn-learn">Join Classes</a></p>
 				   				</div>
 				   			</div>
 				   		</div>
@@ -139,7 +139,7 @@
 				   			<div class="col-md-6 col-sm-12 col-md-offset-3 slider-text">
 				   				<div class="slider-text-inner text-center">
 				   					<h1>Stop Wishing, Start Doing</h1>
-				   					<p><a href="account.html" class="btn btn-primary btn-lg btn-learn">Join Classes</a></p>
+				   					<p><a href="account.php" class="btn btn-primary btn-lg btn-learn">Join Classes</a></p>
 				   				</div>
 				   			</div>
 				   		</div>
@@ -152,7 +152,7 @@
 				   			<div class="col-md-8 col-sm-12 col-md-offset-2 slider-text">
 				   				<div class="slider-text-inner text-center">
 				   					<h1>Working Out is a Reward not a Punishment</h1>
-				   					<p><a href="account.html" class="btn btn-primary btn-lg btn-learn">Join Classes</a></p>
+				   					<p><a href="account.php" class="btn btn-primary btn-lg btn-learn">Join Classes</a></p>
 				   				</div>
 				   			</div>
 				   		</div>
