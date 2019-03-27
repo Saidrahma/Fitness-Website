@@ -1,13 +1,13 @@
 <?php
-class SubscriptionType{
+class Subscribe{
 
     // database connection and table name
     private $conn;
-    private $table_name = "subscription_type";
+    private $table_name = "subscribe";
 
     // object properties
     public $idMember;
-    public $idActType;
+    public $idSubType;
     public $dateDebut;
     public $dateFin;
 
@@ -22,11 +22,9 @@ class SubscriptionType{
 
         // select all query
         $query = "SELECT
-                     s.idMember, s.idActType, s.dateDebut, s.dateFin
+                     s.idMember, s.idSubType, s.dateDebut, s.dateFin
                 FROM
-                    " . $this->table_name . " s
-                ORDER BY
-                    s.idMember DESC";
+                    " . $this->table_name . " s";
 
         // prepare query statement
         $stmt = $this->conn->prepare($query);
@@ -44,19 +42,21 @@ class SubscriptionType{
         $query = "INSERT INTO
                     " . $this->table_name . "
                 SET
-                    idActType=:idActType, dateDebut=:dateDebut, dateFin=:dateFin";
+                idMember=:idMember, idSubType=:idSubType,  dateDebut=:dateDebut, dateFin=:dateFin";
 
         // prepare query
         $stmt = $this->conn->prepare($query);
 
         // sanitize
-        $this->idActType=htmlspecialchars(strip_tags($this->idActType));
+        $this->idMember=htmlspecialchars(strip_tags($this->idMember));
+        $this->idSubType=htmlspecialchars(strip_tags($this->idSubType));
         $this->dateDebut=htmlspecialchars(strip_tags($this->dateDebut));
         $this->dateFin=htmlspecialchars(strip_tags($this->dateFin));
 
 
         // bind values
-        $stmt->bindParam(":idActType", $this->idActType);
+        $stmt->bindParam(":idMember", $this->idMember);
+        $stmt->bindParam(":idSubType", $this->idSubType);
         $stmt->bindParam(":dateDebut", $this->dateDebut);
         $stmt->bindParam(":dateFin", $this->dateFin);
 
@@ -75,7 +75,7 @@ class SubscriptionType{
 
         // query to read single record
         $query = "SELECT
-                     s.idMember, s.idActType, s.dateDebut, s.dateFin
+                     s.dateDebut, s.dateFin
                 FROM
                     " . $this->table_name . " s
                 WHERE
@@ -93,12 +93,7 @@ class SubscriptionType{
         $stmt->execute();
 
         // get retrieved row
-        $row = $stmt->fetch(PDO::FETCH_ASSOC);
-
-        // set values to object properties
-        $this->idActType = $row['idActType'];
-        $this->dateDebut = $row['dateDebut'];
-        $this->dateFin = $row['dateFin'];
+        return $stmt;
     }
 
     // ***************************************************** //
@@ -109,27 +104,24 @@ class SubscriptionType{
         $query = "UPDATE
                     " . $this->table_name . "
                 SET
-                idActType = :idActType,
                 dateDebut = :dateDebut,
                 dateFin = :dateFin
                 WHERE
-                idMember = :idMember";
+                idMember = :idMember AND idSubType = :idSubType";
 
         // prepare query statement
         $stmt = $this->conn->prepare($query);
 
         // sanitize
-        $this->idActType=htmlspecialchars(strip_tags($this->idActType));
         $this->dateDebut=htmlspecialchars(strip_tags($this->dateDebut));
         $this->dateFin=htmlspecialchars(strip_tags($this->dateFin));
         $this->idMember=htmlspecialchars(strip_tags($this->idMember));
-
+        $this->idSubType=htmlspecialchars(strip_tags($this->idSubType));
         // bind new values
-        $stmt->bindParam(':idActType', $this->idActType);
         $stmt->bindParam(':dateDebut', $this->dateDebut);
         $stmt->bindParam(':dateFin', $this->dateFin);
         $stmt->bindParam(':idMember', $this->idMember);
-
+        $stmt->bindParam(':idSubType', $this->idSubType);
         // execute the query
         if($stmt->execute()){
             return true;
@@ -143,16 +135,18 @@ class SubscriptionType{
     function delete(){
 
         // delete query
-        $query = "DELETE FROM " . $this->table_name . " WHERE idMember = ?";
+        $query = "DELETE FROM " . $this->table_name . " WHERE idMember=:idMember AND idSubType=:idSubType";
 
         // prepare query
         $stmt = $this->conn->prepare($query);
 
         // sanitize
         $this->idMember=htmlspecialchars(strip_tags($this->idMember));
+        $this->idSubType=htmlspecialchars(strip_tags($this->idSubType));
 
         // bind id of record to delete
-        $stmt->bindParam(1, $this->idMember);
+        $stmt->bindParam(":idMember", $this->idMember);
+        $stmt->bindParam(":idSubType", $this->idSubType);
 
         // execute query
         if($stmt->execute()){

@@ -28,6 +28,7 @@ $activity->nameActivity = $data->nameActivity;
 $activity->description = $data->description;
 $activity->idDay = $data->idDay;
 $activity->idActType = $data->idActType;
+$activity->idTrainer = $data->idTrainer;
 
 
 // update the activity
