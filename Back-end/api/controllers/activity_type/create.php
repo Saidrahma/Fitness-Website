@@ -19,12 +19,13 @@ $data = json_decode(file_get_contents("php://input"));
 
 // make sure data is not empty
 if(
-    !empty($data->nameType)
+    !empty($data->nameType) &&
+    !empty($data->description)
 ){
 
     // set activityType property values
     $activityType->nameType = $data->nameType;
-
+    $activityType->description = $data->description;
     // create the activityType
     if($activityType->create()){
 

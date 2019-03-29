@@ -22,7 +22,7 @@ include_once "../scripts/callApi.php";
             </thead>
             <tbody>
               <?php
-              $get_data = callAPI('GET','http://localhost:8088/Gym-Website/Back-end/api/controllers/activity/read.php', false);
+              $get_data = callAPI('GET','http://localhost/Gym-Website/Back-end/api/controllers/activity/read.php', false);
               $response = json_decode($get_data, true);
               $data = $response['records'];
                 foreach($data as $key=>$val){

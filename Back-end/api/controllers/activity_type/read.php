@@ -39,6 +39,7 @@ if($num>0){
         $activityType_item=array(
             "idActType" => $idActType,
             "nameType" => $nameType,
+            "description" => $description,
         );
 
         array_push($activityTypes_arr["records"], $activityType_item);

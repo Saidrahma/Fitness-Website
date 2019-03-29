@@ -2,11 +2,22 @@
 <?php 
 include_once "../scripts/callApi.php";
 
+
+if($_SERVER["REQUEST_METHOD"] == "POST"){
+ 
+  //delete
+  if (!empty(trim($_POST["id"]))) {
+      $idMember = array (
+        'idMembre'=> trim($_POST["id"])
+      );
+      $make_call = callAPI('POST', 'http://localhost/Gym-Website/Back-end/api/controllers/member/delete.php', json_encode($idMember));
+  } 
+}
 ?>
 
 <div class="content-wrapper">
     <!-- Main content --> 
-    <?php $members = ["IdMember","Name Member","Address Member","username","password","Date de naiss", "Modify"] ?>
+    <?php $members = ["IdMember","Name Member","Address Member","Date de naiss", "Modify"] ?>
     <section class="content container-fluid">
          <h3> Members: </h3>
          <table class="table table-responsive">
@@ -22,7 +33,7 @@ include_once "../scripts/callApi.php";
             </thead>
             <tbody>
               <?php
-              $get_data = callAPI('GET','http://localhost:8088/Gym-Website/Back-end/api/controllers/member/read.php', false);
+              $get_data = callAPI('GET','http://localhost/Gym-Website/Back-end/api/controllers/member/read.php', false);
               $response = json_decode($get_data, true);
               $data = $response['records'];
                 foreach($data as $key=>$val){
@@ -31,12 +42,13 @@ include_once "../scripts/callApi.php";
                 <td> <?php echo $val["idMembre"] ?> </td>
                 <td><?php echo $val["nameMembre"] ?> </td>
                 <td><?php echo $val["addressMembre"] ?> </td>
-                <td><?php echo $val["username"] ?> </td>
-                <td><?php echo $val["password"] ?> </td>
                 <td><?php echo $val["DateNais"] ?> </td>
                 <td> 
-                  <button class=" btn btn-info" >Edit</button>/
-                  <button class=" btn btn-info" > Delete </button></td>
+                  <button class=" btn btn-info" >Edit</button>
+                  <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+                    <button type="submit" name="id" class=" btn btn-info" value=<?php echo $val["idMembre"] ?> > Delete </button></td>
+                  </form>
+                  
               </tr>
               <?php  } ?>
             </tbody>
@@ -57,20 +69,31 @@ include_once "../scripts/callApi.php";
               </div>
               
 
-              <form method="post" action=""> 
+              <form action="addNewMember.php" method="post"> 
                   <div class="modal-body">
-                  <?php
-                foreach($members as $memberact){
-                  ?>
+ 
                     <div class="form-group">
-                      <label for ="<?php echo ("$member") ?>"><?php echo ("$member") ?></label>
-                      <input type="text" class="form-control" name="<?php echo ("$member") ?>" id="<?php echo ("$memberact") ?>">
+                      <label >Name</label>
+                      <input type="text" class="form-control" name="name">
+
                     </div>
-                  <?php  } ?>
+
+                    <div class="form-group">
+                      <label >Address</label>
+                      <input type="text" class="form-control" name="address">
+
+                    </div>
+
+                    <div class="form-group">
+                      <label >Birthday</label>
+                      <input type="date" class="form-control" name="birthday">
+
+                    </div>
+
                   </div>
                   <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary" >Save changes</button>
+                    <button type="submit" class="btn btn-primary" >Add</button>
                   </div> 
             </form>
             </div>

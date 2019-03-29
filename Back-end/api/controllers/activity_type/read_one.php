@@ -28,6 +28,7 @@ if($activityType->nameType!=null){
     $activityType_arr = array(
         "idActType" => $activityType->idActType,
         "nameType" => $activityType->nameType,
+        "description" => $activityType->description,
     );
 
     // set response code - 200 OK

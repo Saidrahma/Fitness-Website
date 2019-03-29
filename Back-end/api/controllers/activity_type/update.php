@@ -25,6 +25,7 @@ $activityType->idActType = $data->idActType;
 
 // set activityType property values
 $activityType->nameType = $data->nameType;
+$activityType->description = $data->description;
 
 
 
