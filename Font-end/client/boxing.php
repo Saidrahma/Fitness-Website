@@ -54,6 +54,20 @@
 
 	</head>
 	<body>
+    <?php
+			include_once "./scripts/callApi.php";
+			$get_data1 = callAPI('GET', 'http://localhost/Fitness-Website/Back-end/api/controllers/activity_type/read.php', false);
+			$response = json_decode($get_data1, true);
+			$data1 = $response['records'];
+			
+            ?>
+            <?php
+			include_once "./scripts/callApi.php";
+			$get_data = callAPI('GET', 'http://localhost/Fitness-Website/Back-end/api/controllers/activity/read.php', false);
+			$response = json_decode($get_data, true);
+			$data = $response['records'];
+			
+            ?>
 		
 	<div class="colorlib-loader"></div>
 
@@ -63,29 +77,32 @@
 				<div class="container">
 					<div class="row">
 						<div class="col-md-2">
-							<div id="colorlib-logo"><a href="index.html">Robust</a></div>
+							<div id="colorlib-logo"><a href="index.php">Robust</a></div>
 						</div>
 						<div class="col-md-10 text-right menu-1">
 							<ul>
-								<li><a href="index.html">Home</a></li>
+								<li><a href="index.php">Home</a></li>
 								<li class="has-dropdown active">
-									<a href="classes.html">Classes</a>
-									<ul class="dropdown">
-										<li><a href="classes-single.html">Classes Single</a></li>
-										<li><a href="Cardio.html">Cardio Classes</a></li>
-										<li><a href="strength.html">Strength Classes</a></li>
-										<li><a href="fitness.html">Fitness Classes</a></li>
-										<li><a href="yoga.html">Yoga Classes</a></li>
-										<li><a href="dance.html">Dance Classes</a></li>
-										<li><a href="kids.html">Kids Classes</a></li>
-										
-									</ul>
+									<a href="classes.php">Classes</a>
+                                    <ul class="dropdown">
+											<?php
+											for($i = 0; $i<count($data1); $i++) {
+												$var =($data1[$i]['nameType']);
+												$lien=$var.".php";
+												?>
+									  <li><a href=" <?php echo($lien)?>">
+										 <?php
+												print_r($data1[$i]['nameType']);}	
+										 ?>
+									  </a></li>
+                                           
+                                     </ul>
 								</li>
-								<li><a href="schedule.html">Schedule</a></li>
-								<li><a href="about.html">Trainers</a></li>
-								<li><a href="deals.html">Deals</a></li>
-								<li><a href="account.html">Account</a></li>
-								<li><a href="contact.html">Contact</a></li>
+									<li><a href="schedule.html">Schedule</a></li>
+									<li><a href="about.html">Trainers</a></li>
+									<li><a href="deals.html">Deals</a></li>
+									<li><a href="account.php">Account</a></li>
+									<li><a href="contact.html">Contact</a></li>
 							</ul>
 						</div>
 					</div>
@@ -102,7 +119,7 @@
 				   			<div class="col-md-6 col-sm-12 col-md-offset-3 slider-text">
 				   				<div class="slider-text-inner text-center">
 				   					<h1>Classes</h1>
-				   					<h2><span><a href="index.html">Home</a> | Classes</span></h2>
+				   					<h2><span><a href="index.html">Home</a> | <a href="classes.html">Classes</a> | Boxing </span></h2>
 				   				</div>
 				   			</div>
 				   		</div>
@@ -115,91 +132,35 @@
 		<div class="colorlib-classes">
 			<div class="container">
 				<div class="row">
-					<div class="col-md-4 animate-box">
+					<div class="col-lg-12 animate-box">
 						<div class="classes">
-							<div class="classes-img" style="background-image: url(images/g6.jpg);">
-								
-							</div>
-							<div class="desc">
-								<h3><a href="Cardio.html">Cardio classes</a></h3>
-								<p>You will ride at the pace of stimulating music and burn as many calories as you </p>
-								<p><a href="Cardio.html" class="btn-learn">Learn More <i class="icon-arrow-right3"></i></a></p>
-							</div>
+                                <div class="desc">
+                                <h1><a href="#"><strong>  Boxing</strong></a></h1>
+																				<?php
+										for($i = 0; $i<count($data); $i++) {
+										if ($data[$i]['nameActivity']=='Boxing'){
+										$ind = $i ; 
+								        ?>
+										<br> 
+										<p><?php echo($data[$ind]['description']) ;}}?></p>
+                                        
+                                        <h3> The general benefits of Boxing </h3>
+                                        <p><br>Develops endurance, explosiveness, strength, flexibility and coordination.</br>
+                                        <br>Burns hundreds of calories and melts fat.</br>
+                                        <br>Highly positive effect on self-esteem.</br>
+                                        <br>Release, release, excellent training for the mind and body.</br></p>
+                                        
+                                    </div>
+                                   
+                                    
+							<div class="classes-img classes-img-single"  style="background-image: url(images/box.png);width:100%; float: left; margin-right: -100%; position: relative"></div>
+							
 						</div>
-					</div>
-					<div class="col-md-4 animate-box">
-						<div class="classes">
-							<div class="classes-img" style="background-image: url(images/belly.jpg);">
-								
-							</div>
-
-							<div class="desc">
-								<h3><a href="dance.html">Dance Classes</a></h3>
-								<p>Pointing has no control about the blind texts it is an almost unorthographic life</p>
-								<p><a href="dance.html" class="btn-learn">Learn More <i class="icon-arrow-right3"></i></a></p>
-							</div>
-						</div>
-					</div>
-					
-					
-					<div class="col-md-4 animate-box">
-						<div class="classes">
-							<div class="classes-img" style="background-image: url(images/k2.jpg);">
-								
-							</div>
-							<div class="desc">
-								<h3><a href="kids.html">Kids Classes</a></h3>
-								<p>Pointing has no control about the blind texts it is an almost unorthographic life</p>
-								<p><a href="kids.html" class="btn-learn">Learn More <i class="icon-arrow-right3"></i></a></p>
-							</div>
-						</div>
+						
 					</div>
 				</div>
-				<div class="row">
-					<div class="col-md-4 animate-box">
-						<div class="classes">
-							<div class="classes-img" style="background-image: url(images/yoga.jpg);">
-								
-							</div>
-							<div class="desc">
-								<h3><a href="yoga.html">Yoga classes</a></h3>
-								<p>Pointing has no control about the blind texts it is an almost unorthographic life</p>
-								<p><a href="yoga.html" class="btn-learn">Learn More <i class="icon-arrow-right3"></i></a></p>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-4 animate-box">
-						<div class="classes">
-							<div class="classes-img" style="background-image: url(images/bodybuilding.jpg);">
-								
-							</div>
-							<div class="desc">
-								<h3><a href="strength.html">Strength Training</a></h3>
-								<p>Pointing has no control about the blind texts it is an almost unorthographic life</p>
-								<p><a href="strength.html" class="btn-learn">Learn More <i class="icon-arrow-right3"></i></a></p>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-4 animate-box">
-						<div class="classes">
-							<div class="classes-img" style="background-image: url(images/fitness.jpg);">
-								
-							</div>
-							<div class="desc">
-								<h3><a href="fitness.html">Fitness classes</a></h3>
-								<p>Pointing has no control about the blind texts it is an almost unorthographic life</p>
-								<p><a href="fitness.html" class="btn-learn">Learn More <i class="icon-arrow-right3"></i></a></p>
-							</div>
-						</div>
-					</div>
-					
-					
-					
-				</div>
-				
 			</div>	
 		</div>
-		
 	
 		
 		<footer id="colorlib-footer">

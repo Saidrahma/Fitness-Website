@@ -54,6 +54,20 @@
 
 	</head>
 	<body>
+    <?php
+			include_once "./scripts/callApi.php";
+			$get_data1 = callAPI('GET', 'http://localhost/Fitness-Website/Back-end/api/controllers/activity_type/read.php', false);
+			$response = json_decode($get_data1, true);
+			$data1 = $response['records'];
+			
+            ?>
+            <?php
+			include_once "./scripts/callApi.php";
+			$get_data = callAPI('GET', 'http://localhost/Fitness-Website/Back-end/api/controllers/activity/read.php', false);
+			$response = json_decode($get_data, true);
+			$data = $response['records'];
+			
+            ?>
 		
 	<div class="colorlib-loader"></div>
 
@@ -63,28 +77,31 @@
 				<div class="container">
 					<div class="row">
 						<div class="col-md-2">
-							<div id="colorlib-logo"><a href="index.html">Robust</a></div>
+							<div id="colorlib-logo"><a href="index.php">Robust</a></div>
 						</div>
 						<div class="col-md-10 text-right menu-1">
 							<ul>
-								<li><a href="index.html">Home</a></li>
+								<li><a href="index.php">Home</a></li>
 								<li class="has-dropdown active">
-									<a href="classes.html">Classes</a>
-									<ul class="dropdown">
-                                            <li><a href="classes-single.html">Classes Single</a></li>
-                                            <li><a href="Cardio.html">Cardio Classes</a></li>
-                                            <li><a href="strength.html">Strength Classes</a></li>
-                                            <li><a href="fitness.html">Fitness Classes</a></li>
-                                            <li><a href="yoga.html">Yoga Classes</a></li>
-                                            <li><a href="dance.html">Dance Classes</a></li>
-                                            <li><a href="kids.html">Kids Classes</a></li>
-                                            
-                                        </ul>
+									<a href="classes.php">Classes</a>
+                                    <ul class="dropdown">
+											<?php
+											for($i = 0; $i<count($data1); $i++) {
+												$var =($data1[$i]['nameType']);
+												$lien=$var.".php";
+												?>
+									  <li><a href=" <?php echo($lien)?>">
+										 <?php
+												print_r($data1[$i]['nameType']);}	
+										 ?>
+									  </a></li>
+                                           
+                                 </ul>
 								</li>
 								<li><a href="schedule.html">Schedule</a></li>
 								<li><a href="about.html">Trainers</a></li>
 								<li><a href="deals.html">Deals</a></li>
-								<li><a href="account.html">Account</a></li>
+								<li><a href="account.php">Account</a></li>
 								<li><a href="contact.html">Contact</a></li>
 							</ul>
 						</div>
@@ -102,7 +119,7 @@
 				   			<div class="col-md-6 col-sm-12 col-md-offset-3 slider-text">
 				   				<div class="slider-text-inner text-center">
 				   					<h1>Classes</h1>
-				   					<h2><span><a href="index.html">Home</a> | <a href="classes.html">Classes</a> | Belly dance  </span></h2>
+				   					<h2><span><a href="index.html">Home</a> | <a href="classes.html">Classes</a> |Body Building</span></h2>
 				   				</div>
 				   			</div>
 				   		</div>
@@ -118,22 +135,25 @@
 					<div class="col-lg-12 animate-box">
 						<div class="classes">
                                 <div class="desc">
-                                        <h3><a href="#"> Belly Dance </a></h3>
+                                <h1><a href="#"><strong> Body building </strong></a></h1>
+									<?php
+									for($i = 0; $i<count($data); $i++) {
+									if ($data[$i]['nameActivity']=='Body Building'){
+									$ind = $i ; 
+								    ?>
+									<br> 
+									<p><?php		echo($data[$ind]['description']) ;}}?></p>
                                         
-                                        
-																				<p>True reconciliation with your own femininity, it awakens your sensuality by combining rhythm and grace of gestures.</p>
-                                        <h5> 
-																					The general benefits of the Belly Dance </h5>
-                                        <p><br>
-																					Burns hundreds of calories by improving overall tone.</br>
-                                        <br>Strengthening of the abdominal strap.</br>
-                                        <br>Increases the flexibility, grace and femininity of your body.</br>
-                                        <br>Reduces blood circulation disorders.</br></p>
+                                    <h3> The general benefits of body building   </h3>
+                                    <p><br>Burns up to 560 calories on average per course.</br>
+                                    <br>Sculpts, strengthens, defines, tones.</br>
+                                    <br>Improves posture, and bone density (contributes to the prevention of osteoporosis).</br>
+                                    <br>Brings you a sense of accomplishment</br></p>
                                         
                                     </div>
                                    
                                     
-							<div class="classes-img classes-img-single"  style="background-image: url(images/belly.jpg);width:100%; float: left; margin-right: -100%; position: relative"></div>
+							<div class="classes-img classes-img-single"  style="background-image: url(images/bodybuilding.jpg);width:100%; float: left; margin-right: -100%; position: relative"></div>
 							
 						</div>
 						

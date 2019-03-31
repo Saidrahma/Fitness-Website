@@ -54,7 +54,13 @@
 
 	</head>
 	<body>
-		
+			<?php
+			include_once "./scripts/callApi.php";
+			$get_data = callAPI('GET', 'http://localhost/Fitness-Website/Back-end/api/controllers/activity_type/read.php', false);
+			$response = json_decode($get_data, true);
+			$data = $response['records'];
+			
+			?>
 	<div class="colorlib-loader"></div>
 
 	<div id="page">
@@ -63,29 +69,37 @@
 				<div class="container">
 					<div class="row">
 						<div class="col-md-2">
-							<div id="colorlib-logo"><a href="index.html">Robust</a></div>
-						</div>
-						<div class="col-md-10 text-right menu-1">
-							<ul>
-								<li><a href="index.html">Home</a></li>
-								<li class="has-dropdown active">
-									<a href="classes.html">Classes</a>
-									<ul class="dropdown">
-                                            <li><a href="classes-single.html">Classes Single</a></li>
-                                            <li><a href="Cardio.html">Cardio Classes</a></li>
-                                            <li><a href="strength.html">Strength Classes</a></li>
-                                            <li><a href="fitness.html">Fitness Classes</a></li>
-                                            <li><a href="yoga.html">Yoga Classes</a></li>
-                                            <li><a href="dance.html">Dance Classes</a></li>
-                                            <li><a href="kids.html">Kids Classes</a></li>
-                                            
-                                        </ul>
-								</li>
-								<li><a href="schedule.html">Schedule</a></li>
-								<li><a href="about.html">Trainers</a></li>
-								<li><a href="deals.html">Deals</a></li>
-								<li><a href="account.html">Account</a></li>
-								<li><a href="contact.html">Contact</a></li>
+								<div id="colorlib-logo"><a href="index.php">Robust</a></div>
+							</div>
+							<div class="col-md-10 text-right menu-1">
+								<ul>
+									<li><a href="index.php">Home</a></li>
+									<li class="has-dropdown active">
+										<a href="classes.php">Classes</a>
+										<ul class="dropdown">
+												<?php
+												for($i = 0; $i<count($data); $i++) {
+													$var =($data[$i]['nameType']);
+													$lien=$var.".php";
+	
+																										?>
+										
+										<li>	<a href=" <?php echo($lien)?>">
+										
+										
+											<?php
+													print_r($data[$i]['nameType']);
+												}
+											?>
+										</a></li>
+																						 
+																			</ul>
+									</li>
+									<li><a href="schedule.html">Schedule</a></li>
+									<li><a href="about.html">Trainers</a></li>
+									<li><a href="deals.html">Deals</a></li>
+									<li><a href="account.php">Account</a></li>
+									<li><a href="contact.html">Contact</a></li>
 							</ul>
 						</div>
 					</div>
@@ -102,7 +116,7 @@
 				   			<div class="col-md-6 col-sm-12 col-md-offset-3 slider-text">
 				   				<div class="slider-text-inner text-center">
 				   					<h1>Classes</h1>
-				   					<h2><span><a href="index.html">Home</a> | <a href="classes.html">Classes</a> | Fitness Classes</span></h2>
+				   					<h2><span><a href="index.html">Home</a> | <a href="classes.html">Classes</a> | Yoga Classes</span></h2>
 				   				</div>
 				   			</div>
 				   		</div>
@@ -118,22 +132,25 @@
 					<div class="col-lg-12 animate-box">
 						<div class="classes">
                                 <div class="desc">
-                                        <h3><a href="#"> FITNESS</a></h3>
+                                        <h1><a href="yoga.html"><strong> Yoga </strong></a></h1>
+																				<?php
+											                  for($i = 0; $i<count($data); $i++) {
+										                  	if ($data[$i]['nameType']=='Yoga'){
+										                		$ind = $i ; 
+								                      		?>
+										                    <br> 
+											                  <p><?php		echo($data[$ind]['description']) ;}}?></p>
+																				
+                                        <h3> The general benefits of Yoga  </h3>
+                                        <p><br>Burns up to 450 calories per course</br>
+                                        <br>increases  flexibility</br>
+                                        <br>increases muscle strength and tone</br>
+                                        <br>maintains a balanced metabolism</br></p>
                                         
-                                        <p> You don’t need a ton of equipment, fancy  machines, or crazy new moves to get in a good workout. In fact, some of the most basic exercises and the loss-program  are still some of the best fitness exercises.</p>
-                                       
-                                        
-                                        <div ><span>
-																					<a href="weight_loss.html"><img src="images/loose.png">  </a>
-																					<a href="basic_exercice.html"><img src="images/basic.png" > </a>
-																				</span>
-																					
-																				</div>
-																												
                                     </div>
                                    
                                     
-							<div class="classes-img classes-img-single"  style="background-image: url(images/fitness.jpg);width:100%; float: left; margin-right: -100%; position: relative"></div>
+							<div class="classes-img classes-img-single"  style="background-image: url(images/y.jpg);width:100%; float: left; margin-right: -100%; position: relative"></div>
 							
 						</div>
 						

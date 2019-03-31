@@ -54,6 +54,13 @@
 
 	</head>
 	<body>
+			<?php
+			include_once "./scripts/callApi.php";
+			$get_data = callAPI('GET', 'http://localhost/Fitness-Website/Back-end/api/controllers/activity_type/read.php', false);
+			$response = json_decode($get_data, true);
+			$data = $response['records'];
+		
+			?>
 		
 	<div class="colorlib-loader"></div>
 
@@ -63,29 +70,40 @@
 				<div class="container">
 					<div class="row">
 						<div class="col-md-2">
-							<div id="colorlib-logo"><a href="index.html">Robust</a></div>
-						</div>
-						<div class="col-md-10 text-right menu-1">
-							<ul>
-								<li><a href="index.html">Home</a></li>
-								<li class="has-dropdown active">
-									<a href="classes.html">Classes</a>
-									<ul class="dropdown">
-                                            <li><a href="classes-single.html">Classes Single</a></li>
-                                            <li><a href="Cardio.html">Cardio Classes</a></li>
-                                            <li><a href="strength.html">Strength Classes</a></li>
-                                            <li><a href="fitness.html">Fitness Classes</a></li>
-                                            <li><a href="yoga.html">Yoga Classes</a></li>
-                                            <li><a href="dance.html">Dance Classes</a></li>
-                                            <li><a href="kids.html">Kids Classes</a></li>
+								<div id="colorlib-logo"><a href="index.php">Robust</a></div>
+							</div>
+							<div class="col-md-10 text-right menu-1">
+								<ul>
+									<li><a href="index.php">Home</a></li>
+									<li class="has-dropdown active">
+										<a href="classes.php">Classes</a>
+										<ul class="dropdown">
+												<?php
+												for($i = 0; $i<count($data); $i++) {
+													$var =($data[$i]['nameType']);
+													$lien=$var.".php";
+	
+																										?>
+										
+										<li>	<a href=" <?php echo($lien)?>">
+										
+										
+											<?php
+													print_r($data[$i]['nameType']);
+												}
+											?>
+										</a></li>
+																						 
+																			</ul>
+									</li>
+									<li><a href="schedule.html">Schedule</a></li>
+									<li><a href="about.html">Trainers</a></li>
+									<li><a href="deals.html">Deals</a></li>
+									<li><a href="account.php">Account</a></li>
+									<li><a href="contact.html">Contact</a></li>
                                             
-                                        </ul>
-								</li>
-								<li><a href="schedule.html">Schedule</a></li>
-								<li><a href="about.html">Trainers</a></li>
-								<li><a href="deals.html">Deals</a></li>
-								<li><a href="account.html">Account</a></li>
-								<li><a href="contact.html">Contact</a></li>
+                
+								
 							</ul>
 						</div>
 					</div>
@@ -102,7 +120,7 @@
 				   			<div class="col-md-6 col-sm-12 col-md-offset-3 slider-text">
 				   				<div class="slider-text-inner text-center">
 				   					<h1>Classes</h1>
-				   					<h2><span><a href="index.html">Home</a> | <a href="classes.html">Classes</a> |Body Building</span></h2>
+				   					<h2><span><a href="index.php">Home</a> | <a href="classes.php">Classes</a> | Dance Classes</span></h2>
 				   				</div>
 				   			</div>
 				   		</div>
@@ -117,23 +135,36 @@
 				<div class="row">
 					<div class="col-lg-12 animate-box">
 						<div class="classes">
-                                <div class="desc">
-                                        <h3><a href="#"> Body Building</a></h3>
-                                        
-                                        <p>
-																					This is the most popular course in the world of fitness because it is the fastest and most effective way to get fit.</p>
-                                        <h5> The general benefits of body building   </h5>
-                                        <p><br>
-																					Burns up to 560 calories on average per course.</br>
-                                        <br>Sculpts, strengthens, defines, tones.</br>
-                                        <br>Improves posture, and bone density (contributes to the prevention of osteoporosis).</br>
-                                        <br>Brings you a sense of accomplishment</br></p>
-                                        
-                                    </div>
-                                   
-                                    
-							<div class="classes-img classes-img-single"  style="background-image: url(images/bodybuilding.jpg);width:100%; float: left; margin-right: -100%; position: relative"></div>
-							
+              <div class="desc">
+									<h1><a href="dance.php"> <strong>Dance</strong></a></h1>
+									<?php
+										for($i = 0; $i<count($data); $i++) {
+								
+									 if ($data[$i]['nameType']=='Dance'){
+										 $ind = $i ; 
+										 ?>
+
+
+									<br> 
+									<p>
+									<?php	
+									echo($data[$ind]['description']) ;}}
+									 ?> 
+									 </br>
+									 </p>
+
+										<div >
+											<span>
+												<br>
+												<div class="col-md-7 animate-box">
+												<a href="belly_dance.php" ><img src="images/bellydance.png"></a>
+									    </div>
+												<a href="zumba.php" ><img src="images/zumbadance.png" > </a>
+									      </br>
+									  	</span>
+										</div>
+							</div>    
+							<div class="classes-img classes-img-single"  style="background-image: url(images/dd.jpg)"></div>						
 						</div>
 						
 					</div>
@@ -167,7 +198,9 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 	<!-- jQuery Easing -->
 	<script src="js/jquery.easing.1.3.js"></script>
 	<!-- Bootstrap -->
-	<script src="js/bootstrap.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    
+
 	<!-- Waypoints -->
 	<script src="js/jquery.waypoints.min.js"></script>
 	<!-- Stellar Parallax -->

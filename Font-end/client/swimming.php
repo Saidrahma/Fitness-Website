@@ -54,6 +54,20 @@
 
 	</head>
 	<body>
+			<?php
+			include_once "./scripts/callApi.php";
+			$get_data1 = callAPI('GET', 'http://localhost/Fitness-Website/Back-end/api/controllers/activity_type/read.php', false);
+			$response = json_decode($get_data1, true);
+			$data1 = $response['records'];
+			
+            ?>
+            <?php
+			include_once "./scripts/callApi.php";
+			$get_data = callAPI('GET', 'http://localhost/Fitness-Website/Back-end/api/controllers/activity/read.php', false);
+			$response = json_decode($get_data, true);
+			$data = $response['records'];
+			
+            ?>
 		
 	<div class="colorlib-loader"></div>
 
@@ -63,29 +77,32 @@
 				<div class="container">
 					<div class="row">
 						<div class="col-md-2">
-							<div id="colorlib-logo"><a href="index.html">Robust</a></div>
+							<div id="colorlib-logo"><a href="index.php">Robust</a></div>
 						</div>
 						<div class="col-md-10 text-right menu-1">
 							<ul>
-								<li><a href="index.html">Home</a></li>
+								<li><a href="index.php">Home</a></li>
 								<li class="has-dropdown active">
-									<a href="classes.html">Classes</a>
+									<a href="classes.php">Classes</a>
 									<ul class="dropdown">
-                                            <li><a href="classes-single.html">Classes Single</a></li>
-                                            <li><a href="Cardio.html">Cardio Classes</a></li>
-                                            <li><a href="strength.html">Strength Classes</a></li>
-                                            <li><a href="fitness.html">Fitness Classes</a></li>
-                                            <li><a href="yoga.html">Yoga Classes</a></li>
-                                            <li><a href="dance.html">Dance Classes</a></li>
-                                            <li><a href="kids.html">Kids Classes</a></li>
-                                            
-                                        </ul>
+											<?php
+											for($i = 0; $i<count($data1); $i++) {
+												$var =($data1[$i]['nameType']);
+												$lien=$var.".php";
+												?>
+									  <li><a href=" <?php echo($lien)?>">
+										 <?php
+												print_r($data1[$i]['nameType']);}	
+										 ?>
+									  </a></li>
+                                           
+                                     </ul>
 								</li>
-								<li><a href="schedule.html">Schedule</a></li>
-								<li><a href="about.html">Trainers</a></li>
-								<li><a href="deals.html">Deals</a></li>
-								<li><a href="account.html">Account</a></li>
-								<li><a href="contact.html">Contact</a></li>
+									<li><a href="schedule.html">Schedule</a></li>
+									<li><a href="about.html">Trainers</a></li>
+									<li><a href="deals.html">Deals</a></li>
+									<li><a href="account.php">Account</a></li>
+									<li><a href="contact.html">Contact</a></li>
 							</ul>
 						</div>
 					</div>
@@ -102,7 +119,7 @@
 				   			<div class="col-md-6 col-sm-12 col-md-offset-3 slider-text">
 				   				<div class="slider-text-inner text-center">
 				   					<h1>Classes</h1>
-				   					<h2><span><a href="index.html">Home</a> | <a href="classes.html">Classes</a> | Kids Classes</span></h2>
+				   					<h2><span><a href="index.html">Home</a> | <a href="classes.html">Classes</a> | Swimming </span></h2>
 				   				</div>
 				   			</div>
 				   		</div>
@@ -118,23 +135,26 @@
 					<div class="col-lg-12 animate-box">
 						<div class="classes">
                                 <div class="desc">
-                                        <h3><a href="#">Kids Classes
-                                        </a></h3>
-                                        
-                                        <p> Sport, whether team-based or individual , are a great activity for children that provide a variety of benefits other than physical activity .</p>
-                                       
-                                        
-                                        <div ><span>
-											<a href="karate.html"><img src="images/karate.png">  </a>
-											<a href="swimming.html"><img src="images/swim.png" > </a>
-										</span>
-											
-										</div>
-                                    
-                                    </div>
+                                <h1><a href="#"><strong> Swimming  </strong></a></h1>
+								<!-- 
+                                <?php 
+					            // for($i = 0; $i<count($data); $i++) {
+							    // if ($data[$i]['nameActivity']=='Swimming'){
+							    // $ind = $i ; 
+								?>
+								<br> 
+                                <p>
+                                    <?php //echo($data[$ind]['description']) ;}}?>
+                                </p> -->
+                                <p>Aimed at the children between the age of 6 and 12 years old.Our lessons provide an introduction to professionnal swimming Practiced under the supervision of our coach </p>
+                                <h3> The general benefits of Swimming  </h3>
+                                <p><br>Contributes to the development of all muscles.</br>
+                                <br>Harmoniously solicits the respiratory system and develops lung capacity.</br>
+                                <br>Activity that soothes and relaxes.</br></p>
+                                </div>
                                    
                                     
-							<div class="classes-img classes-img-single"  style="background-image: url(images/k.jpg);width:100%; float: left; margin-right: -100%; position: relative"></div>
+							<div class="classes-img classes-img-single"  style="background-image: url(images/k2.jpg );width:100%; float: left; margin-right: -100%; position: relative"></div>
 							
 						</div>
 						
@@ -169,9 +189,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 	<!-- jQuery Easing -->
 	<script src="js/jquery.easing.1.3.js"></script>
 	<!-- Bootstrap -->
-    <script src="js/bootstrap.min.js"></script>
-    
-
+	<script src="js/bootstrap.min.js"></script>
 	<!-- Waypoints -->
 	<script src="js/jquery.waypoints.min.js"></script>
 	<!-- Stellar Parallax -->

@@ -54,6 +54,20 @@
 
 	</head>
 	<body>
+			<?php
+			include_once "./scripts/callApi.php";
+			$get_data1 = callAPI('GET', 'http://localhost/Fitness-Website/Back-end/api/controllers/activity_type/read.php', false);
+			$response = json_decode($get_data1, true);
+			$data1 = $response['records'];
+			
+            ?>
+            <?php
+			include_once "./scripts/callApi.php";
+			$get_data = callAPI('GET', 'http://localhost/Fitness-Website/Back-end/api/controllers/activity/read.php', false);
+			$response = json_decode($get_data, true);
+			$data = $response['records'];
+			
+            ?>
 		
 	<div class="colorlib-loader"></div>
 
@@ -63,28 +77,31 @@
 				<div class="container">
 					<div class="row">
 						<div class="col-md-2">
-							<div id="colorlib-logo"><a href="index.html">Robust</a></div>
+								<div id="colorlib-logo"><a href="index.php">Robust</a></div>
 						</div>
 						<div class="col-md-10 text-right menu-1">
 							<ul>
-								<li><a href="index.html">Home</a></li>
+								<li><a href="index.php">Home</a></li>
 								<li class="has-dropdown active">
-									<a href="classes.html">Classes</a>
+									<a href="classes.php">Classes</a>
 									<ul class="dropdown">
-                                            <li><a href="classes-single.html">Classes Single</a></li>
-                                            <li><a href="Cardio.html">Cardio Classes</a></li>
-                                            <li><a href="strength.html">Strength Classes</a></li>
-                                            <li><a href="fitness.html">Fitness Classes</a></li>
-                                            <li><a href="yoga.html">Yoga Classes</a></li>
-                                            <li><a href="dance.html">Dance Classes</a></li>
-                                            <li><a href="kids.html">Kids Classes</a></li>
-                                            
-                                        </ul>
+											<?php
+											for($i = 0; $i<count($data1); $i++) {
+												$var =($data1[$i]['nameType']);
+												$lien=$var.".php";
+												?>
+									  <li><a href=" <?php echo($lien)?>">
+										 <?php
+												print_r($data1[$i]['nameType']);}	
+										 ?>
+									  </a></li>
+                                           
+                   </ul>
 								</li>
 								<li><a href="schedule.html">Schedule</a></li>
 								<li><a href="about.html">Trainers</a></li>
 								<li><a href="deals.html">Deals</a></li>
-								<li><a href="account.html">Account</a></li>
+								<li><a href="account.php">Account</a></li>
 								<li><a href="contact.html">Contact</a></li>
 							</ul>
 						</div>
@@ -102,7 +119,7 @@
 				   			<div class="col-md-6 col-sm-12 col-md-offset-3 slider-text">
 				   				<div class="slider-text-inner text-center">
 				   					<h1>Classes</h1>
-				   					<h2><span><a href="index.html">Home</a> | <a href="classes.html">Classes</a> | Yoga Classes</span></h2>
+				   					<h2><span><a href="index.html">Home</a> | <a href="classes.html">Classes</a> | Basic Exercice </span></h2>
 				   				</div>
 				   			</div>
 				   		</div>
@@ -118,22 +135,26 @@
 					<div class="col-lg-12 animate-box">
 						<div class="classes">
                                 <div class="desc">
-                                        <h3><a href="yoga.html"> Yoga </a></h3>
-																				<p></p>
-																				<p>it's an integrated course of 1hour that offers you Flexibility ,	meditation ,concentration and Respiration .</p> 
-																			
-																				
-																		
-                                        <h5> The general benefits of Yoga  </h5>
-                                        <p><br>Burns up to 450 calories per course</br>
-                                        <br>increases  flexibility</br>
-                                        <br>increases muscle strength and tone</br>
-                                        <br>maintains a balanced metabolism</br></p>
+																				<h1><a href="#"><strong> Basic Exercice </strong></a></h1>
+																				<?php
+											                  for($i = 0; $i<count($data); $i++) {
+										                  	if ($data[$i]['nameActivity']=='Basic Exercise'){
+										                		$ind = $i ; 
+								                      		?>
+										                    <br> 
+											                  <p><?php		echo($data[$ind]['description']) ;}}?></p>
                                         
+																				
+                                        <h3> The general benefits of the  basic exercice </h3>
+                                        <p><br>Burns up to 500 calories per course </br>
+                                        <br>Strengthens the joints</br>
+              
+                                        <br>Increases leg strength and muscle endurance without increasing weight</br></p>
+                                         
                                     </div>
                                    
                                     
-							<div class="classes-img classes-img-single"  style="background-image: url(images/y.jpg);width:100%; float: left; margin-right: -100%; position: relative"></div>
+							<div class="classes-img classes-img-single"  style="background-image: url(images/squat.jpg);width:100%; float: left; margin-right: -100%; position: relative"></div>
 							
 						</div>
 						

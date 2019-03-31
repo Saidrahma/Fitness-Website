@@ -54,7 +54,13 @@
 
 	</head>
 	<body>
-		
+			<?php
+			include_once "./scripts/callApi.php";
+			$get_data = callAPI('GET', 'http://localhost/Fitness-Website/Back-end/api/controllers/activity_type/read.php', false);
+			$response = json_decode($get_data, true);
+			$data = $response['records'];
+			
+			?>
 	<div class="colorlib-loader"></div>
 
 	<div id="page">
@@ -63,28 +69,36 @@
 				<div class="container">
 					<div class="row">
 						<div class="col-md-2">
-							<div id="colorlib-logo"><a href="index.html">Robust</a></div>
+							<div id="colorlib-logo"><a href="index.php">Robust</a></div>
 						</div>
 						<div class="col-md-10 text-right menu-1">
 							<ul>
-								<li><a href="index.html">Home</a></li>
+								<li><a href="index.php">Home</a></li>
 								<li class="has-dropdown active">
-									<a href="classes.html">Classes</a>
+									<a href="classes.php">Classes</a>
 									<ul class="dropdown">
-                                            <li><a href="classes-single.html">Classes Single</a></li>
-                                            <li><a href="Cardio.html">Cardio Classes</a></li>
-                                            <li><a href="strength.html">Strength Classes</a></li>
-                                            <li><a href="fitness.html">Fitness Classes</a></li>
-                                            <li><a href="yoga.html">Yoga Classes</a></li>
-                                            <li><a href="dance.html">Dance Classes</a></li>
-                                            <li><a href="kids.html">Kids Classes</a></li>
-                                            
-                                        </ul>
+											<?php
+											for($i = 0; $i<count($data); $i++) {
+												$var =($data[$i]['nameType']);
+												$lien=$var.".php";
+
+																									?>
+									
+									<li>	<a href=" <?php echo($lien)?>">
+									
+									
+										<?php
+												print_r($data[$i]['nameType']);
+											}
+										?>
+									</a></li>
+                                           
+                                    </ul>
 								</li>
 								<li><a href="schedule.html">Schedule</a></li>
 								<li><a href="about.html">Trainers</a></li>
 								<li><a href="deals.html">Deals</a></li>
-								<li><a href="account.html">Account</a></li>
+								<li><a href="account.php">Account</a></li>
 								<li><a href="contact.html">Contact</a></li>
 							</ul>
 						</div>
@@ -102,7 +116,7 @@
 				   			<div class="col-md-6 col-sm-12 col-md-offset-3 slider-text">
 				   				<div class="slider-text-inner text-center">
 				   					<h1>Classes</h1>
-				   					<h2><span><a href="index.html">Home</a> | <a href="classes.html">Classes</a> | Boxing </span></h2>
+				   					<h2><span><a href="index.html">Home</a> | <a href="classes.html">Classes</a> | Cardio Classes</span></h2>
 				   				</div>
 				   			</div>
 				   		</div>
@@ -118,20 +132,19 @@
 					<div class="col-lg-12 animate-box">
 						<div class="classes">
                                 <div class="desc">
-                                        <h3><a href="#"> Boxing </a></h3>
-                                        
-                                        <p> 
-																					This beneficial sport helps to develop resistance, speed, flexibility and coordination. The most requested parts of the body are the back, the abdominals and the joints.</p>
-                                        <h5> The general benefits of Boxing </h5>
-                                        <p><br>Develops endurance, explosiveness, strength, flexibility and coordination.</br>
-                                        <br>Burns hundreds of calories and melts fat.</br>
-                                        <br>Highly positive effect on self-esteem.</br>
-                                        <br>Release, release, excellent training for the mind and body.</br></p>
-                                        
+																				<h1><a href="#"><strong> CARDIO</strong></a>
+                                        <h3><a href="#"> RPM COURSE </a></h3>
+                                        <p> You will ride at the pace of stimulating music and burn as many calories as you can on 20-25 kilometers of varied terrain, controlling the intensity of your effort with the resistance dial and the speed of the pedals.</p>
+                                        <h5> <strong> The General  benefits of RPM </strong> </h5>
+                                        <p><br>Burn up to 675 calories per course, and increase your metabolism (calories burned at rest).</br>
+                                        <br>Improve your cardiovascular capacity,</br>
+                                        <br>Releases endorphins, and brings a feeling of natural euphoria.</br>
+                                        <br>Increases leg strength and muscle endurance without increasing weight</br></p>
+                                         
                                     </div>
                                    
                                     
-							<div class="classes-img classes-img-single"  style="background-image: url(images/box.png);width:100%; float: left; margin-right: -100%; position: relative"></div>
+							<div class="classes-img classes-img-single"  style="background-image: url(images/RPM.png);width:100%; float: left; margin-right: -100%; position: relative"></div>
 							
 						</div>
 						
