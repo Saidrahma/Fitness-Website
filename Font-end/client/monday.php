@@ -54,6 +54,13 @@
 
 	</head>
 	<body>
+			<?php
+			include_once "./scripts/callApi.php";
+			$get_data = callAPI('GET', 'http://localhost:8080/Fitness-Website/Back-end/api/controllers/activity_type/read.php', false);
+			$response = json_decode($get_data, true);
+			$data = $response['records'];
+			
+			?>
 		
 	<div class="colorlib-loader"></div>
 
@@ -69,21 +76,31 @@
 							<ul>
 								<li><a href="index.php">Home</a></li>
 								<li class="has-dropdown">
-									<a href="classes.html">Classes</a>
+									<a href="classes.php">Classes</a>
 									<ul class="dropdown">
-										<li><a href="classes-single.html">Classes Single</a></li>
-										<li><a href="#">Cardio Classes</a></li>
-										<li><a href="#">Muscle Classes</a></li>
-										<li><a href="#">Fitness Classes</a></li>
-										<li><a href="#">Body Building</a></li>
-										<li><a href="#">Kids Classes</a></li>
-									</ul>
+											<?php
+														for($i = 0; $i<count($data); $i++) {
+															$var =($data[$i]['nameType']);
+															$lien=$var.".php";
+		
+																												?>
+												
+												<li>	<a href=" <?php echo($lien)?>">
+												
+												
+													<?php
+															print_r($data[$i]['nameType']);
+														}
+													?>
+												</a></li>
+												
+											</ul>
 								</li>
-								<li><a href="schedule.html">Schedule</a></li>
-								<li class="active"><a href="about.html">Trainers</a></li>
-								<li><a href="deals.html">Deals</a></li>
+								<li class="active"><a href="schedule.php">Schedule</a></li>
+								<li><a href="about.php">Trainers</a></li>
+								<li><a href="deals.php">Deals</a></li>
 								<li><a href="account.php">Account</a></li>
-								<li><a href="contact.html">Contact</a></li>
+								<li><a href="contact.php">Contact</a></li>
 							</ul>
 						</div>
 					</div>
@@ -99,8 +116,8 @@
 			   			<div class="row">
 				   			<div class="col-md-6 col-sm-12 col-md-offset-3 slider-text">
 				   				<div class="slider-text-inner text-center">
-				   					<h1>Trainers</h1>
-				   					<h2><span><a href="index.php">Home</a> | Trainers</span></h2>
+				   					<h1>Schedule</h1>
+				   					<h2><span><a href="index.php">Home</a> | Schedule</span></h2>
 				   				</div>
 				   			</div>
 				   		</div>
@@ -109,93 +126,78 @@
 			  	</ul>
 		  	</div>
 		</aside>
-		<div class="colorlib-trainers">
+		
+		<div id="colorlib-schedule" class="colorlib-light-grey">
 			<div class="container">
 				<div class="row">
 					<div class="col-md-8 col-md-offset-2 text-center colorlib-heading animate-box">
-						<h2>Our Experienced Trainers</h2>
-						<p>Meet the people who will help you become the best version of yourself! </p>
+						<h2>Our Class Schedule</h2>
+						<p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name</p>
 					</div>
 				</div>
-				<div class="row">
-					<div class="col-md-3 col-sm-3 animate-box">
-						<div class="trainers-entry">
-							<div class="trainer-img" style="background-image: url(images/trainer-1.jpg)"></div>
-							<div class="desc">
-								<h3>Diego Carter</h3>
-								<span>Kids Trainer</span>
+				<div class="row" id="ancre">
+					<div class="schedule text-center animate-box">
+						<div class="col-md-12">
+							<ul class="week">
+								<li><a href="schedule.html#ancre">Sunday</a></li>
+								<li class="active"><a href="#ancre">Monday</a></li>
+								<li><a href="tuesday.html#ancre">Tuesday</a></li>
+								<li><a href="wednesday.html#ancre">Wednesday</a></li>
+								<li><a href="thursday.html#ancre">Thursday</a></li>
+								<li><a href="friday.html#ancre">Friday</a></li>
+								<li><a href="saturday.html#ancre">Saturday</a></li>
+							</ul>
+						</div>
+                        <div class="schedule-flex">
+							<div class="entry-forth">
+                                <p class="icon"><span><i class="flaticon-meditation"></i></span></p>
+								<p class="time"><span>6 am - 8 am</span></p>
+								<h3>Yoga Classes</h3>
+								<p class="trainer"><span>Sarah Henderson</span></p>
+							</div>
+							<div class="entry-forth">
+                                <p class="icon"><span><i class="flaticon-swimmer"></i></span></p>
+                                <p class="time"><span>8 am - 10 am</span></p>
+								<h3>Swimming Program</h3>
+								<p class="trainer"><span>Diego Carter</span></p>
+							</div>
+							<div class="entry-forth">
+                                <p class="icon"><span><i class="flaticon-gym"></i></span></p>
+								<p class="time"><span>10 am - 12 pm</span></p>
+								<h3>Cardio Program</h3>
+								<p class="trainer"><span>Danielle Peter</span></p>
+							</div>
+							<div class="entry-forth">
+                                <p class="icon"><span><i class="flaticon-weightlifting"></i></span></p>
+								<p class="time"><span>12 pm - 2 pm</span></p>
+								<h3>Body Building</h3>
+								<p class="trainer"><span>George Cooper</span></p>
 							</div>
 						</div>
-					</div>
-
-					<div class="col-md-3 col-sm-3 animate-box">
-						<div class="trainers-entry">
-							<div class="trainer-img" style="background-image: url(images/trainer-2.jpg)"></div>
-							<div class="desc">
-								<h3>Lea Young</h3>
-								<span>Dance Trainer</span>
+						<div class="schedule-flex">
+							<div class="entry-forth">
+								<p class="icon"><span><i class="flaticon-martial-arts"></i></span></p>
+								<p class="time"><span>2 pm - 4 pm</span></p>
+								<h3>Karate Classes</h3>
+								<p class="trainer"><span>Diego Carter</span></p>
 							</div>
-						</div>
-					</div>
-
-					<div class="col-md-3 col-sm-3 animate-box">
-						<div class="trainers-entry">
-							<div class="trainer-img" style="background-image: url(images/trainer-8.jpg)"></div>
-							<div class="desc">
-								<h3>Tom Scott</h3>
-								<span>Cardio Trainer</span>
+							<div class="entry-forth">
+								<p class="icon"><span><i class="flaticon-gloves"></i></span></p>
+								<p class="time"><span>4 pm - 6 pm</span></p>
+								<h3>Boxing Program</h3>
+								<p class="trainer"><span>Mark Brook</span></p>
 							</div>
-						</div>
-					</div>
-
-					<div class="col-md-3 col-sm-3 animate-box">
-						<div class="trainers-entry">
-							<div class="trainer-img" style="background-image: url(images/trainer-6.jpg)"></div>
-							<div class="desc">
-								<h3>Sarah Henderson</h3>
-								<span>Yoga Trainer</span>
+							<div class="entry-forth">
+								<p class="icon"><span><i class="flaticon-exercise-2"></i></span></p>
+								<p class="time"><span>6 pm - 8 pm</span></p>
+								<h3>Loose Weight Program</h3>
+								<p class="trainer"><span>Tom Scott</span></p>
 							</div>
-						</div>
-					</div>
-				</div>
-				<br> <br>
-				<div class="row">
-					<div class="col-md-3 col-sm-3 animate-box">
-						<div class="trainers-entry">
-							<div class="trainer-img" style="background-image: url(images/trainer-5.jpg)"></div>
-							<div class="desc">
-								<h3>Mark Brook</h3>
-								<span>Strength Trainer</span>
-							</div>
-						</div>
-					</div>
-
-					<div class="col-md-3 col-sm-3 animate-box">
-						<div class="trainers-entry">
-							<div class="trainer-img" style="background-image: url(images/trainer-7.jpg)"></div>
-							<div class="desc">
-								<h3>Danielle Peter</h3>
-								<span>Cardio Trainer</span>
-							</div>
-						</div>
-					</div>
-
-					<div class="col-md-3 col-sm-3 animate-box">
-						<div class="trainers-entry">
-							<div class="trainer-img" style="background-image: url(images/trainer-4.jpg)"></div>
-							<div class="desc">
-								<h3>George Cooper</h3>
-								<span>Body Building Trainer</span>
-							</div>
-						</div>
-					</div>
-
-					<div class="col-md-3 col-sm-3 animate-box">
-						<div class="trainers-entry">
-							<div class="trainer-img" style="background-image: url(images/trainer-3.jpg)"></div>
-							<div class="desc">
-								<h3>Alysha Reed</h3>
-								<span>Fitness Trainer</span>
+							<div class="entry-forth">
+								<p class="icon"><span><i class="flaticon-man"></i></span></p>
+								<p class="time"><span>8 pm - 10 pm</span></p>
+								<h3>Basic Exercise</h3>
+								<p class="trainer"><span>Alysha Reed</span></p>
 							</div>
 						</div>
 					</div>
@@ -217,7 +219,6 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 				</div>
 			</div>
 		</footer>
-
 	</div>
 
 	<div class="gototop js-top">

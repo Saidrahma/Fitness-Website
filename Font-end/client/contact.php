@@ -54,7 +54,14 @@
 
 	</head>
 	<body>
-		
+			<?php
+			include_once "./scripts/callApi.php";
+			$get_data = callAPI('GET', 'http://localhost:8080/Fitness-Website/Back-end/api/controllers/activity_type/read.php', false);
+			$response = json_decode($get_data, true);
+			$data = $response['records'];
+			
+			?>
+
 	<div class="colorlib-loader"></div>
 
 	<div id="page">
@@ -69,20 +76,31 @@
 							<ul>
 								<li><a href="index.php">Home</a></li>
 								<li class="has-dropdown">
-									<a href="classes.html">Classes</a>
+									<a href="classes.php">Classes</a>
 									<ul class="dropdown">
-										<li><a href="classes-single.html">Classes Single</a></li>
-										<li><a href="#">Cardio Classes</a></li>
-										<li><a href="#">Muscle Classes</a></li>
-										<li><a href="#">Fitness Classes</a></li>
-										<li><a href="#">Body Building</a></li>
-									</ul>
+										<?php
+													for($i = 0; $i<count($data); $i++) {
+														$var =($data[$i]['nameType']);
+														$lien=$var.".php";
+	
+																											?>
+											
+											<li>	<a href=" <?php echo($lien)?>">
+											
+											
+												<?php
+														print_r($data[$i]['nameType']);
+													}
+												?>
+											</a></li>
+											
+										</ul>
 								</li>
-								<li class="active"><a href="schedule.html">Schedule</a></li>
-								<li><a href="about.html">Trainers</a></li>
-								<li><a href="deals.html">Deals</a></li>
-								<li><a href="account.html">Account</a></li>
-								<li><a href="contact.html">Contact</a></li>
+								<li><a href="schedule.php">Schedule</a></li>
+								<li><a href="about.php">Trainers</a></li>
+								<li><a href="deals.php">Deals</a></li>
+								<li><a href="account.php">Account</a></li>
+								<li class="active"><a href="contact.php">Contact</a></li>
 							</ul>
 						</div>
 					</div>
@@ -98,8 +116,8 @@
 			   			<div class="row">
 				   			<div class="col-md-6 col-sm-12 col-md-offset-3 slider-text">
 				   				<div class="slider-text-inner text-center">
-				   					<h1>Schedule</h1>
-				   					<h2><span><a href="index.php">Home</a> | Schedule</span></h2>
+				   					<h1>Contact</h1>
+				   					<h2><span><a href="index.php">Home</a> | Contact</span></h2>
 				   				</div>
 				   			</div>
 				   		</div>
@@ -109,85 +127,73 @@
 		  	</div>
 		</aside>
 		
-		<div id="colorlib-schedule" class="colorlib-light-grey">
+		<div id="colorlib-contact">
 			<div class="container">
 				<div class="row">
-					<div class="col-md-8 col-md-offset-2 text-center colorlib-heading animate-box">
-						<h2>Our Class Schedule</h2>
-						<p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name</p>
+					<div class="col-md-10 col-md-offset-1 animate-box">
+						<h2>Contact Information</h2>
+						<div class="row">
+							<div class="col-md-12">
+								<div class="contact-info-wrap-flex">
+									<div class="con-info">
+										<p><span><i class="icon-location-2"></i></span> 676 INSAT Urban Center North BP, Tunis Cedex 1080</p>
+									</div>
+									<div class="con-info">
+										<p><span><i class="icon-phone3"></i></span> <a href="tel://1234567920">+216 71 703 829</a></p>
+									</div>
+									<div class="con-info">
+										<p><span><i class="icon-paperplane"></i></span> <a href="mailto:info@yoursite.com">info@FitnessClub.com</a></p>
+									</div>
+									<div class="con-info">
+										<p><span><i class="icon-globe"></i></span> <a href="#">FitnessClub.com</a></p>
+									</div>
+								</div>
+							</div>
+						</div>
 					</div>
-				</div>
-				<div class="row" id="ancre">
-					<div class="schedule text-center animate-box">
-						<div class="col-md-12">
-							<ul class="week">
-								<li><a href="schedule.html#ancre">Sunday</a></li>
-								<li><a href="monday.html#ancre">Monday</a></li>
-								<li><a href="tuesday.html#ancre">Tuesday</a></li>
-								<li class="active"><a href="#ancre">Wednesday</a></li>
-								<li><a href="thursday.html#ancre">Thursday</a></li>
-								<li><a href="friday.html#ancre">Friday</a></li>
-								<li><a href="saturday.html#ancre">Saturday</a></li>
-							</ul>
-						</div>
-						
-						<div class="schedule-flex">
-							<div class="entry-forth">
-								<p class="icon"><span><i class="flaticon-gym"></i></span></p>
-								<p class="time"><span>6 am - 8 am</span></p>
-								<h3>Cardio Program</h3>
-								<p class="trainer"><span>Tom Scott</span></p>
+					<div class="col-md-10 col-md-offset-1 animate-box">
+						<h2>Get In Touch</h2>
+						<form action="#">
+							<div class="row form-group">
+								<div class="col-md-6">
+									<!-- <label for="fname">First Name</label> -->
+									<input type="text" id="fname" class="form-control" placeholder="First Name">
+								</div>
+								<div class="col-md-6">
+									<!-- <label for="lname">Last Name</label> -->
+									<input type="text" id="lname" class="form-control" placeholder="Last Name">
+								</div>
 							</div>
-							<div class="entry-forth">
-								<p class="icon"><span><i class="flaticon-exercise-2"></i></span></p>
-								<p class="time"><span>8 am - 10 am</span></p>
-								<h3>Loose Weight Program</h3>
-								<p class="trainer"><span>Alysha Reed</span></p>
+
+							<div class="row form-group">
+								<div class="col-md-12">
+									<!-- <label for="email">Email</label> -->
+									<input type="email" id="email" class="form-control" placeholder="Email">
+								</div>
 							</div>
-							<div class="entry-forth">
-								<p class="icon"><span><i class="flaticon-meditation"></i></span></p>
-								<p class="time"><span>10 am - 12 pm</span></p>
-								<h3>Yoga Classes</h3>
-								<p class="trainer"><span>Sarah Henderson</span></p>
+
+							<div class="row form-group">
+								<div class="col-md-12">
+									<!-- <label for="subject">Subject</label> -->
+									<input type="text" id="subject" class="form-control" placeholder="Subject of this message">
+								</div>
 							</div>
-							<div class="entry-forth">
-								<p class="icon"><span><i class="flaticon-gloves"></i></span></p>
-								<p class="time"><span>12 pm - 2 pm</span></p>
-								<h3>Boxing Program</h3>
-								<p class="trainer"><span>Mark Brook</span></p>
+
+							<div class="row form-group">
+								<div class="col-md-12">
+									<!-- <label for="message">Message</label> -->
+									<textarea name="message" id="message" cols="30" rows="10" class="form-control" placeholder="Say something about us"></textarea>
+								</div>
 							</div>
-						</div>
-						<div class="schedule-flex">
-							<div class="entry-forth">
-								<p class="icon"><span><i class="flaticon-martial-arts"></i></span></p>
-								<p class="time"><span>2 pm - 4 pm</span></p>
-								<h3>Karate Classes</h3>
-								<p class="trainer"><span>Diego Carter</span></p>
+							<div class="form-group">
+								<input type="submit" value="Send Message" class="btn btn-primary">
 							</div>
-							<div class="entry-forth">
-								<p class="icon"><span><i class="flaticon-weightlifting"></i></span></p>
-								<p class="time"><span>4 pm - 6 pm</span></p>
-								<h3>Body Building</h3>
-								<p class="trainer"><span>George Cooper</span></p>
-							</div>
-							<div class="entry-forth">
-								<p class="icon"><span><i class="flaticon-swimmer"></i></span></p>
-								<p class="time"><span>6 pm - 8 pm</span></p>
-								<h3>Swimming Program</h3>
-								<p class="trainer"><span>Diego Carter</span></p>
-							</div>
-							<div class="entry-forth">
-								<p class="icon"><span><i class="flaticon-man"></i></span></p>
-								<p class="time"><span>8 pm - 10 pm</span></p>
-								<h3>Basic Exercise</h3>
-								<p class="trainer"><span>Alysha Reed</span></p>
-							</div>
-						</div>
+						</form>		
 					</div>
 				</div>
 			</div>
 		</div>
-	
+
 		<footer id="colorlib-footer">
 			<div class="copy">
 				<div class="container">
@@ -227,6 +233,9 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 	<script src="js/magnific-popup-options.js"></script>
 	<!-- Counters -->
 	<script src="js/jquery.countTo.js"></script>
+	<!-- Google Map -->
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCefOgb1ZWqYtj7raVSmN4PL2WkTrc-KyA&sensor=false"></script>
+	<script src="js/google_map.js"></script>
 	<!-- Main -->
 	<script src="js/main.js"></script>
 

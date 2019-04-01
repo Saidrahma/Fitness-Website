@@ -54,6 +54,14 @@
 
 	</head>
 	<body>
+			<?php
+			include_once "./scripts/callApi.php";
+			$get_data = callAPI('GET', 'http://localhost:8080/Fitness-Website/Back-end/api/controllers/activity_type/read.php', false);
+			$response = json_decode($get_data, true);
+			$data = $response['records'];
+			
+			?>
+
 		
 	<div class="colorlib-loader"></div>
 
@@ -69,20 +77,31 @@
 							<ul>
 								<li><a href="index.php">Home</a></li>
 								<li class="has-dropdown">
-									<a href="classes.html">Classes</a>
+									<a href="classes.php">Classes</a>
 									<ul class="dropdown">
-										<li><a href="classes-single.html">Classes Single</a></li>
-										<li><a href="#">Cardio Classes</a></li>
-										<li><a href="#">Muscle Classes</a></li>
-										<li><a href="#">Fitness Classes</a></li>
-										<li><a href="#">Body Building</a></li>
-									</ul>
+											<?php
+														for($i = 0; $i<count($data); $i++) {
+															$var =($data[$i]['nameType']);
+															$lien=$var.".php";
+		
+																												?>
+												
+												<li>	<a href=" <?php echo($lien)?>">
+												
+												
+													<?php
+															print_r($data[$i]['nameType']);
+														}
+													?>
+												</a></li>
+												
+											</ul>
 								</li>
-								<li class="active"><a href="schedule.html">Schedule</a></li>
-								<li><a href="about.html">Trainers</a></li>
-								<li><a href="deals.html">Deals</a></li>
-								<li><a href="account.html">Account</a></li>
-								<li><a href="contact.html">Contact</a></li>
+								<li class="active"><a href="schedule.php">Schedule</a></li>
+								<li><a href="about.php">Trainers</a></li>
+								<li><a href="deals.php">Deals</a></li>
+								<li><a href="account.php">Account</a></li>
+								<li><a href="contact.php">Contact</a></li>
 							</ul>
 						</div>
 					</div>
@@ -123,14 +142,14 @@
 							<ul class="week">
 								<li><a href="schedule.html#ancre">Sunday</a></li>
 								<li><a href="monday.html#ancre">Monday</a></li>
-								<li class="active"><a href="#ancre">Tuesday</a></li>
+								<li><a href="tuesday.html#ancre">Tuesday</a></li>
 								<li><a href="wednesday.html#ancre">Wednesday</a></li>
 								<li><a href="thursday.html#ancre">Thursday</a></li>
-								<li><a href="friday.html#ancre">Friday</a></li>
+								<li class="active"><a href="#ancre">Friday</a></li>
 								<li><a href="saturday.html#ancre">Saturday</a></li>
 							</ul>
 						</div>
-                        <div class="schedule-flex">
+						<div class="schedule-flex">
 							<div class="entry-forth">
                                 <p class="icon"><span><i class="flaticon-man"></i></span></p>
 								<p class="time"><span>6 am - 8 am</span></p>

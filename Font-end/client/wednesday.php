@@ -54,6 +54,13 @@
 
 	</head>
 	<body>
+			<?php
+			include_once "./scripts/callApi.php";
+			$get_data = callAPI('GET', 'http://localhost:8080/Fitness-Website/Back-end/api/controllers/activity_type/read.php', false);
+			$response = json_decode($get_data, true);
+			$data = $response['records'];
+			
+			?>
 		
 	<div class="colorlib-loader"></div>
 
@@ -69,20 +76,31 @@
 							<ul>
 								<li><a href="index.php">Home</a></li>
 								<li class="has-dropdown">
-									<a href="classes.html">Classes</a>
+									<a href="classes.php">Classes</a>
 									<ul class="dropdown">
-										<li><a href="classes-single.html">Classes Single</a></li>
-										<li><a href="#">Cardio Classes</a></li>
-										<li><a href="#">Muscle Classes</a></li>
-										<li><a href="#">Fitness Classes</a></li>
-										<li><a href="#">Body Building</a></li>
-									</ul>
+											<?php
+														for($i = 0; $i<count($data); $i++) {
+															$var =($data[$i]['nameType']);
+															$lien=$var.".php";
+		
+																												?>
+												
+												<li>	<a href=" <?php echo($lien)?>">
+												
+												
+													<?php
+															print_r($data[$i]['nameType']);
+														}
+													?>
+												</a></li>
+												
+											</ul>
 								</li>
-								<li class="active"><a href="schedule.html">Schedule</a></li>
-								<li><a href="about.html">Trainers</a></li>
-								<li><a href="deals.html">Deals</a></li>
-								<li><a href="account.html">Account</a></li>
-								<li><a href="contact.html">Contact</a></li>
+								<li class="active"><a href="schedule.php">Schedule</a></li>
+								<li><a href="about.php">Trainers</a></li>
+								<li><a href="deals.php">Deals</a></li>
+								<li><a href="account.php">Account</a></li>
+								<li><a href="contact.php">Contact</a></li>
 							</ul>
 						</div>
 					</div>
@@ -113,21 +131,24 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-md-8 col-md-offset-2 text-center colorlib-heading animate-box">
-						<h2>Our Class Schedule</h2> </div>
+						<h2>Our Class Schedule</h2>
+						<p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name</p>
+					</div>
 				</div>
 				<div class="row" id="ancre">
 					<div class="schedule text-center animate-box">
 						<div class="col-md-12">
 							<ul class="week">
-								<li class="active"><a href="#ancre">Sunday</a></li>
+								<li><a href="schedule.html#ancre">Sunday</a></li>
 								<li><a href="monday.html#ancre">Monday</a></li>
 								<li><a href="tuesday.html#ancre">Tuesday</a></li>
-								<li><a href="wednesday.html#ancre">Wednesday</a></li>
+								<li class="active"><a href="#ancre">Wednesday</a></li>
 								<li><a href="thursday.html#ancre">Thursday</a></li>
 								<li><a href="friday.html#ancre">Friday</a></li>
 								<li><a href="saturday.html#ancre">Saturday</a></li>
 							</ul>
 						</div>
+						
 						<div class="schedule-flex">
 							<div class="entry-forth">
 								<p class="icon"><span><i class="flaticon-gym"></i></span></p>

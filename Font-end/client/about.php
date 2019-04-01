@@ -54,13 +54,14 @@
 
 	</head>
 	<body>
-	<?php
-		include_once "./scripts/callApi.php";
-		$get_data = callAPI('GET', 'http://localhost/Fitness-Website/Back-end/api/controllers/trainer/read.php', false);
-		$response = json_decode($get_data, true);
-		$data = $response['records'];
-		
-		?>
+			<?php
+			include_once "./scripts/callApi.php";
+			$get_data = callAPI('GET', 'http://localhost:8080/Fitness-Website/Back-end/api/controllers/activity_type/read.php', false);
+			$response = json_decode($get_data, true);
+			$data = $response['records'];
+			
+			?>
+
 	<div class="colorlib-loader"></div>
 
 	<div id="page">
@@ -75,21 +76,31 @@
 							<ul>
 								<li><a href="index.php">Home</a></li>
 								<li class="has-dropdown">
-									<a href="classes.html">Classes</a>
+									<a href="classes.php">Classes</a>
 									<ul class="dropdown">
-										<li><a href="classes-single.html">Classes Single</a></li>
-										<li><a href="#">Cardio Classes</a></li>
-										<li><a href="#">Muscle Classes</a></li>
-										<li><a href="#">Fitness Classes</a></li>
-										<li><a href="#">Body Building</a></li>
-										<li><a href="#">Kids Classes</a></li>
-									</ul>
+										<?php
+													for($i = 0; $i<count($data); $i++) {
+														$var =($data[$i]['nameType']);
+														$lien=$var.".php";
+	
+																											?>
+											
+											<li>	<a href=" <?php echo($lien)?>">
+											
+											
+												<?php
+														print_r($data[$i]['nameType']);
+													}
+												?>
+											</a></li>
+											
+										</ul>
 								</li>
-								<li><a href="schedule.html">Schedule</a></li>
-								<li class="active"><a href="about.html">Trainers</a></li>
-								<li><a href="deals.html">Deals</a></li>
+								<li><a href="schedule.php">Schedule</a></li>
+								<li class="active"><a href="about.php">Trainers</a></li>
+								<li><a href="deals.php">Deals</a></li>
 								<li><a href="account.php">Account</a></li>
-								<li><a href="contact.html">Contact</a></li>
+								<li><a href="contact.php">Contact</a></li>
 							</ul>
 						</div>
 					</div>
@@ -128,18 +139,8 @@
 						<div class="trainers-entry">
 							<div class="trainer-img" style="background-image: url(images/trainer-1.jpg)"></div>
 							<div class="desc">
-                            <?php
-							for($i = 0; $i<count($data); $i++) {
-							if ($data[$i]['nameTrainer']=='Diego Carter'){
-							$ind = $i ; 
-						    ?><h3>
-							<?php	
-							echo($data[$ind]['nameTrainer']) ;
-                            ?> </h3>
-                            <span>
-							<?php	
-							echo($data[$ind]['addressTrainer']) ;}}
-                            ?> </span>
+								<h3>Diego Carter</h3>
+								<span>Kids Trainer</span>
 							</div>
 						</div>
 					</div>
@@ -148,19 +149,8 @@
 						<div class="trainers-entry">
 							<div class="trainer-img" style="background-image: url(images/trainer-2.jpg)"></div>
 							<div class="desc">
-                            <?php
-							for($i = 0; $i<count($data); $i++) {
-							if ($data[$i]['nameTrainer']=='Lea Young'){
-							$ind = $i ; 
-						    ?><h3>
-							<?php	
-							echo($data[$ind]['nameTrainer']) ;
-                            ?> </h3>
-                            <span>
-							<?php	
-							echo($data[$ind]['addressTrainer']) ;}}
-                            ?> </span>
-							
+								<h3>Lea Young</h3>
+								<span>Dance Trainer</span>
 							</div>
 						</div>
 					</div>
@@ -169,18 +159,8 @@
 						<div class="trainers-entry">
 							<div class="trainer-img" style="background-image: url(images/trainer-8.jpg)"></div>
 							<div class="desc">
-                            <?php
-							for($i = 0; $i<count($data); $i++) {
-							if ($data[$i]['nameTrainer']=='Tom Scott'){
-							$ind = $i ; 
-						    ?><h3>
-							<?php	
-							echo($data[$ind]['nameTrainer']) ;
-                            ?> </h3>
-                            <span>
-							<?php	
-							echo($data[$ind]['addressTrainer']) ;}}
-                            ?> </span>
+								<h3>Tom Scott</h3>
+								<span>Cardio Trainer</span>
 							</div>
 						</div>
 					</div>
@@ -189,19 +169,8 @@
 						<div class="trainers-entry">
 							<div class="trainer-img" style="background-image: url(images/trainer-6.jpg)"></div>
 							<div class="desc">
-                            <?php
-							for($i = 0; $i<count($data); $i++) {
-							if ($data[$i]['nameTrainer']=='Sarah Henderson'){
-							$ind = $i ; 
-						    ?><h3>
-							<?php	
-							echo($data[$ind]['nameTrainer']) ;
-                            ?> </h3>
-                            <span>
-							<?php	
-							echo($data[$ind]['addressTrainer']) ;}}
-                            ?> </span>
-                            
+								<h3>Sarah Henderson</h3>
+								<span>Yoga Trainer</span>
 							</div>
 						</div>
 					</div>
@@ -212,18 +181,8 @@
 						<div class="trainers-entry">
 							<div class="trainer-img" style="background-image: url(images/trainer-5.jpg)"></div>
 							<div class="desc">
-                            <?php
-							for($i = 0; $i<count($data); $i++) {
-							if ($data[$i]['nameTrainer']=='Mark Brook'){
-							$ind = $i ; 
-						    ?><h3>
-							<?php	
-							echo($data[$ind]['nameTrainer']) ;
-                            ?> </h3>
-                            <span>
-							<?php	
-							echo($data[$ind]['addressTrainer']) ;}}
-                            ?> </span>
+								<h3>Mark Brook</h3>
+								<span>Strength Trainer</span>
 							</div>
 						</div>
 					</div>
@@ -232,19 +191,8 @@
 						<div class="trainers-entry">
 							<div class="trainer-img" style="background-image: url(images/trainer-7.jpg)"></div>
 							<div class="desc">
-                            <?php
-							for($i = 0; $i<count($data); $i++) {
-							if ($data[$i]['nameTrainer']=='Danielle Peter'){
-							$ind = $i ; 
-						    ?><h3>
-							<?php	
-							echo($data[$ind]['nameTrainer']) ;
-                            ?> </h3>
-                            <span>
-							<?php	
-							echo($data[$ind]['addressTrainer']) ;}}
-                            ?> </span>
-								
+								<h3>Danielle Peter</h3>
+								<span>Cardio Trainer</span>
 							</div>
 						</div>
 					</div>
@@ -253,19 +201,8 @@
 						<div class="trainers-entry">
 							<div class="trainer-img" style="background-image: url(images/trainer-4.jpg)"></div>
 							<div class="desc">
-                            <?php
-							for($i = 0; $i<count($data); $i++) {
-							if ($data[$i]['nameTrainer']=='George Cooper'){
-							$ind = $i ; 
-						    ?><h3>
-							<?php	
-							echo($data[$ind]['nameTrainer']) ;
-                            ?> </h3>
-                            <span>
-							<?php	
-							echo($data[$ind]['addressTrainer']) ;}}
-                            ?> </span>
-								
+								<h3>George Cooper</h3>
+								<span>Body Building Trainer</span>
 							</div>
 						</div>
 					</div>
@@ -274,19 +211,8 @@
 						<div class="trainers-entry">
 							<div class="trainer-img" style="background-image: url(images/trainer-3.jpg)"></div>
 							<div class="desc">
-                            <?php
-							for($i = 0; $i<count($data); $i++) {
-							if ($data[$i]['nameTrainer']=='Alysha Reed'){
-							$ind = $i ; 
-						    ?><h3>
-							<?php	
-							echo($data[$ind]['nameTrainer']) ;
-                            ?> </h3>
-                            <span>
-							<?php	
-							echo($data[$ind]['addressTrainer']) ;}}
-                            ?> </span>
-							
+								<h3>Alysha Reed</h3>
+								<span>Fitness Trainer</span>
 							</div>
 						</div>
 					</div>

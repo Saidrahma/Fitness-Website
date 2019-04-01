@@ -3,7 +3,7 @@
 	<head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Robust Template</title>
+	<title>Fitness Club</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="description" content="" />
 	<meta name="keywords" content="" />
@@ -70,7 +70,7 @@
 				<div class="container">
 					<div class="row">
 						<div class="col-md-2">
-							<div id="colorlib-logo"><a href="index.html">Robust</a></div>
+							<div id="colorlib-logo"><a href="index.html">Fitness Club</a></div>
 						</div>
 						<div class="col-md-10 text-right menu-1">
 							<ul>
@@ -93,15 +93,14 @@
 												}
 											?>
 										</a></li>
-								
 										
 									</ul>
 								</li>
-								<li><a href="schedule.html">Schedule</a></li>
-								<li><a href="about.html">Trainers</a></li>
-								<li><a href="deals.html">Deals</a></li>
+								<li><a href="schedule.php">Schedule</a></li>
+								<li><a href="about.php">Trainers</a></li>
+								<li><a href="deals.php">Deals</a></li>
 								<li><a href="account.php">Account</a></li>
-								<li><a href="contact.html">Contact</a></li>
+								<li><a href="contact.php">Contact</a></li>
 							</ul>
 						</div>
 					</div>
@@ -165,7 +164,7 @@
 							</div>
 							<div class="desc">
 								<h3><a href="kids.php">Kids Classes</a></h3>
-								<p>Sport, whether team-based or individual , are a great activity for children that</p>
+								<p>Sport, whether team-based or individual , are a great activity for children </p>
 								<p><a href="kids.php" class="btn-learn">Learn More <i class="icon-arrow-right3"></i></a></p>
 							</div>
 						</div>
