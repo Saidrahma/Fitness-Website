@@ -78,7 +78,7 @@
 								<li class="has-dropdown active">
 									<a href="classes.php">Classes</a>
 									<ul class="dropdown">
-                                    <?php
+                      <?php
 												for($i = 0; $i<count($data); $i++) {
 													$var =($data[$i]['nameType']);
 													$lien=$var.".php";
