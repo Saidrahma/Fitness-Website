@@ -93,13 +93,7 @@
 												}
 											?>
 										</a></li>
-										<!-- <li><a href="classes-single.html">Classes Single</a></li>
-										<li><a href="Cardio.html">Cardio Classes</a></li>
-										<li><a href="strength.html">Strength Classes</a></li>
-										<li><a href="fitness.html">Fitness Classes</a></li>
-										<li><a href="yoga.html">Yoga Classes</a></li>
-										<li><a href="dance.html">Dance Classes</a></li>
-										<li><a href="kids.html">Kids Classes</a></li> -->
+								
 										
 									</ul>
 								</li>
@@ -143,9 +137,9 @@
 								
 							</div>
 							<div class="desc">
-								<h3><a href="Cardio.html">Cardio classes</a></h3>
+								<h3><a href="Cardio.php">Cardio classes</a></h3>
 								<p>You will ride at the pace of stimulating music and burn as many calories as you </p>
-								<p><a href="Cardio.html" class="btn-learn">Learn More <i class="icon-arrow-right3"></i></a></p>
+								<p><a href="Cardio.php" class="btn-learn">Learn More <i class="icon-arrow-right3"></i></a></p>
 							</div>
 						</div>
 					</div>
@@ -156,9 +150,9 @@
 							</div>
 
 							<div class="desc">
-								<h3><a href="dance.html">Dance Classes</a></h3>
-								<p>Pointing has no control about the blind texts it is an almost unorthographic life</p>
-								<p><a href="dance.html" class="btn-learn">Learn More <i class="icon-arrow-right3"></i></a></p>
+								<h3><a href="dance.php">Dance Classes</a></h3>
+								<p>Dance fitness offers a relaxing environment where you can really let your </p>
+								<p><a href="dance.php" class="btn-learn">Learn More <i class="icon-arrow-right3"></i></a></p>
 							</div>
 						</div>
 					</div>
@@ -170,9 +164,9 @@
 								
 							</div>
 							<div class="desc">
-								<h3><a href="kids.html">Kids Classes</a></h3>
-								<p>Pointing has no control about the blind texts it is an almost unorthographic life</p>
-								<p><a href="kids.html" class="btn-learn">Learn More <i class="icon-arrow-right3"></i></a></p>
+								<h3><a href="kids.php">Kids Classes</a></h3>
+								<p>Sport, whether team-based or individual , are a great activity for children that</p>
+								<p><a href="kids.php" class="btn-learn">Learn More <i class="icon-arrow-right3"></i></a></p>
 							</div>
 						</div>
 					</div>
@@ -184,9 +178,9 @@
 								
 							</div>
 							<div class="desc">
-								<h3><a href="yoga.html">Yoga classes</a></h3>
-								<p>Pointing has no control about the blind texts it is an almost unorthographic life</p>
-								<p><a href="yoga.html" class="btn-learn">Learn More <i class="icon-arrow-right3"></i></a></p>
+								<h3><a href="yoga.php">Yoga classes</a></h3>
+								<p>it's an integrated course of 1hour that offers you Flexibility ,meditation,</p>
+								<p><a href="yoga.php" class="btn-learn">Learn More <i class="icon-arrow-right3"></i></a></p>
 							</div>
 						</div>
 					</div>
@@ -196,9 +190,9 @@
 								
 							</div>
 							<div class="desc">
-								<h3><a href="strength.html">Strength Training</a></h3>
-								<p>Pointing has no control about the blind texts it is an almost unorthographic life</p>
-								<p><a href="strength.html" class="btn-learn">Learn More <i class="icon-arrow-right3"></i></a></p>
+								<h3><a href="strength.php">Strength Training</a></h3>
+								<p>It's not about geting big muscles and looking buff. It's all about getting </p>
+								<p><a href="strength.php" class="btn-learn">Learn More <i class="icon-arrow-right3"></i></a></p>
 							</div>
 						</div>
 					</div>
@@ -208,9 +202,9 @@
 								
 							</div>
 							<div class="desc">
-								<h3><a href="fitness.html">Fitness classes</a></h3>
-								<p>Pointing has no control about the blind texts it is an almost unorthographic life</p>
-								<p><a href="fitness.html" class="btn-learn">Learn More <i class="icon-arrow-right3"></i></a></p>
+								<h3><a href="fitness.php">Fitness classes</a></h3>
+								<p>You don’t need a ton of equipment, fancy  machines, or crazy new moves to get in a </p>
+								<p><a href="fitness.php" class="btn-learn">Learn More <i class="icon-arrow-right3"></i></a></p>
 							</div>
 						</div>
 					</div>
