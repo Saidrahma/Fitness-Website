@@ -150,7 +150,11 @@
 
 							<div class="desc">
 								<h3><a href="dance.php">Dance Classes</a></h3>
+<<<<<<< HEAD
 								<p>Pointing has no control about the blind texts it is an almost unorthographic life</p>
+=======
+								<p>Dance fitness offers a relaxing environment where you can really let your </p>
+>>>>>>> b391307419976456d89de340c4f04f9718eee846
 								<p><a href="dance.php" class="btn-learn">Learn More <i class="icon-arrow-right3"></i></a></p>
 							</div>
 						</div>
@@ -164,7 +168,11 @@
 							</div>
 							<div class="desc">
 								<h3><a href="kids.php">Kids Classes</a></h3>
+<<<<<<< HEAD
 								<p>Pointing has no control about the blind texts it is an almost unorthographic life</p>
+=======
+								<p>Sport, whether team-based or individual , are a great activity for children that</p>
+>>>>>>> b391307419976456d89de340c4f04f9718eee846
 								<p><a href="kids.php" class="btn-learn">Learn More <i class="icon-arrow-right3"></i></a></p>
 							</div>
 						</div>
@@ -178,7 +186,11 @@
 							</div>
 							<div class="desc">
 								<h3><a href="yoga.php">Yoga classes</a></h3>
+<<<<<<< HEAD
 								<p>Pointing has no control about the blind texts it is an almost unorthographic life</p>
+=======
+								<p>it's an integrated course of 1hour that offers you Flexibility ,meditation,</p>
+>>>>>>> b391307419976456d89de340c4f04f9718eee846
 								<p><a href="yoga.php" class="btn-learn">Learn More <i class="icon-arrow-right3"></i></a></p>
 							</div>
 						</div>
@@ -190,7 +202,11 @@
 							</div>
 							<div class="desc">
 								<h3><a href="strength.php">Strength Training</a></h3>
+<<<<<<< HEAD
 								<p>Pointing has no control about the blind texts it is an almost unorthographic life</p>
+=======
+								<p>It's not about geting big muscles and looking buff. It's all about getting </p>
+>>>>>>> b391307419976456d89de340c4f04f9718eee846
 								<p><a href="strength.php" class="btn-learn">Learn More <i class="icon-arrow-right3"></i></a></p>
 							</div>
 						</div>
@@ -202,7 +218,11 @@
 							</div>
 							<div class="desc">
 								<h3><a href="fitness.php">Fitness classes</a></h3>
+<<<<<<< HEAD
 								<p>Pointing has no control about the blind texts it is an almost unorthographic life</p>
+=======
+								<p>You don’t need a ton of equipment, fancy  machines, or crazy new moves to get in a </p>
+>>>>>>> b391307419976456d89de340c4f04f9718eee846
 								<p><a href="fitness.php" class="btn-learn">Learn More <i class="icon-arrow-right3"></i></a></p>
 							</div>
 						</div>

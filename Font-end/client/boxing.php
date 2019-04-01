@@ -136,7 +136,7 @@
 						<div class="classes">
                                 <div class="desc">
                                 <h1><a href="#"><strong>  Boxing</strong></a></h1>
-																				<?php
+										<?php
 										for($i = 0; $i<count($data); $i++) {
 										if ($data[$i]['nameActivity']=='Boxing'){
 										$ind = $i ; 
