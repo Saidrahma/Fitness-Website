@@ -3,7 +3,7 @@
 	<head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Robust Template</title>
+	<title>Fitness Club</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="description" content="" />
 	<meta name="keywords" content="" />
@@ -56,7 +56,7 @@
 	<body>
     <?php
 		include_once "./scripts/callApi.php";
-		$get_data = callAPI('GET', 'http://localhost/Fitness-Website/Back-end/api/controllers/activity_type/read.php', false);
+		$get_data = callAPI('GET', 'http://localhost:8080/Fitness-Website/Back-end/api/controllers/activity_type/read.php', false);
 		$response = json_decode($get_data, true);
 		$data = $response['records'];
 		
@@ -70,7 +70,7 @@
 				<div class="container">
 					<div class="row">
 						<div class="col-md-2">
-							<div id="colorlib-logo"><a href="index.html">Robust</a></div>
+							<div id="colorlib-logo"><a href="index.html">Fitness Club</a></div>
 						</div>
 						<div class="col-md-10 text-right menu-1">
 							<ul>
@@ -93,21 +93,14 @@
 												}
 											?>
 										</a></li>
-										<!-- <li><a href="classes-single.html">Classes Single</a></li>
-										<li><a href="Cardio.html">Cardio Classes</a></li>
-										<li><a href="strength.html">Strength Classes</a></li>
-										<li><a href="fitness.html">Fitness Classes</a></li>
-										<li><a href="yoga.html">Yoga Classes</a></li>
-										<li><a href="dance.html">Dance Classes</a></li>
-										<li><a href="kids.html">Kids Classes</a></li> -->
 										
 									</ul>
 								</li>
-								<li><a href="schedule.html">Schedule</a></li>
-								<li><a href="about.html">Trainers</a></li>
-								<li><a href="deals.html">Deals</a></li>
+								<li><a href="schedule.php">Schedule</a></li>
+								<li><a href="about.php">Trainers</a></li>
+								<li><a href="deals.php">Deals</a></li>
 								<li><a href="account.php">Account</a></li>
-								<li><a href="contact.html">Contact</a></li>
+								<li><a href="contact.php">Contact</a></li>
 							</ul>
 						</div>
 					</div>
@@ -143,9 +136,9 @@
 								
 							</div>
 							<div class="desc">
-								<h3><a href="Cardio.html">Cardio classes</a></h3>
+								<h3><a href="Cardio.php">Cardio classes</a></h3>
 								<p>You will ride at the pace of stimulating music and burn as many calories as you </p>
-								<p><a href="Cardio.html" class="btn-learn">Learn More <i class="icon-arrow-right3"></i></a></p>
+								<p><a href="Cardio.php" class="btn-learn">Learn More <i class="icon-arrow-right3"></i></a></p>
 							</div>
 						</div>
 					</div>
@@ -156,9 +149,9 @@
 							</div>
 
 							<div class="desc">
-								<h3><a href="dance.html">Dance Classes</a></h3>
+								<h3><a href="dance.php">Dance Classes</a></h3>
 								<p>Pointing has no control about the blind texts it is an almost unorthographic life</p>
-								<p><a href="dance.html" class="btn-learn">Learn More <i class="icon-arrow-right3"></i></a></p>
+								<p><a href="dance.php" class="btn-learn">Learn More <i class="icon-arrow-right3"></i></a></p>
 							</div>
 						</div>
 					</div>
@@ -170,9 +163,9 @@
 								
 							</div>
 							<div class="desc">
-								<h3><a href="kids.html">Kids Classes</a></h3>
+								<h3><a href="kids.php">Kids Classes</a></h3>
 								<p>Pointing has no control about the blind texts it is an almost unorthographic life</p>
-								<p><a href="kids.html" class="btn-learn">Learn More <i class="icon-arrow-right3"></i></a></p>
+								<p><a href="kids.php" class="btn-learn">Learn More <i class="icon-arrow-right3"></i></a></p>
 							</div>
 						</div>
 					</div>
@@ -184,9 +177,9 @@
 								
 							</div>
 							<div class="desc">
-								<h3><a href="yoga.html">Yoga classes</a></h3>
+								<h3><a href="yoga.php">Yoga classes</a></h3>
 								<p>Pointing has no control about the blind texts it is an almost unorthographic life</p>
-								<p><a href="yoga.html" class="btn-learn">Learn More <i class="icon-arrow-right3"></i></a></p>
+								<p><a href="yoga.php" class="btn-learn">Learn More <i class="icon-arrow-right3"></i></a></p>
 							</div>
 						</div>
 					</div>
@@ -196,9 +189,9 @@
 								
 							</div>
 							<div class="desc">
-								<h3><a href="strength.html">Strength Training</a></h3>
+								<h3><a href="strength.php">Strength Training</a></h3>
 								<p>Pointing has no control about the blind texts it is an almost unorthographic life</p>
-								<p><a href="strength.html" class="btn-learn">Learn More <i class="icon-arrow-right3"></i></a></p>
+								<p><a href="strength.php" class="btn-learn">Learn More <i class="icon-arrow-right3"></i></a></p>
 							</div>
 						</div>
 					</div>
@@ -208,9 +201,9 @@
 								
 							</div>
 							<div class="desc">
-								<h3><a href="fitness.html">Fitness classes</a></h3>
+								<h3><a href="fitness.php">Fitness classes</a></h3>
 								<p>Pointing has no control about the blind texts it is an almost unorthographic life</p>
-								<p><a href="fitness.html" class="btn-learn">Learn More <i class="icon-arrow-right3"></i></a></p>
+								<p><a href="fitness.php" class="btn-learn">Learn More <i class="icon-arrow-right3"></i></a></p>
 							</div>
 						</div>
 					</div>
