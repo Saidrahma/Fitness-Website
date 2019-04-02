@@ -128,7 +128,7 @@
 					<div class="col-lg-12 animate-box">
 						<div class="classes">
               <div class="desc">
-                <h1><a href="#"> <strong>STRENGTH</strong></a></h3>
+                <h1><strong>STRENGTH</strong></h3>
 								<?php
 											for($i = 0; $i<count($data); $i++) {
 											if ($data[$i]['nameType']=='Strength'){

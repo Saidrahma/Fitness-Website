@@ -56,7 +56,7 @@
 	<body>
     <?php
 		include_once "./scripts/callApi.php";
-		$get_data = callAPI('GET', 'http://localhost/Fitness-Website/Back-end/api/controllers/activity_type/read.php', false);
+		$get_data = callAPI('GET', 'http://localhost:8080/Fitness-Website/Back-end/api/controllers/activity_type/read.php', false);
 		$response = json_decode($get_data, true);
 		$data = $response['records'];
 		

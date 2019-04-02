@@ -132,7 +132,7 @@
 					<div class="col-lg-12 animate-box">
 						<div class="classes">
                                 <div class="desc">
-                                        <h1><a href="yoga.html"><strong> Yoga </strong></a></h1>
+                                        <h1><strong> Yoga </strong></h1>
 																				<?php
 											                  for($i = 0; $i<count($data); $i++) {
 										                  	if ($data[$i]['nameType']=='Yoga'){

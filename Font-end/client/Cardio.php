@@ -132,8 +132,8 @@
 					<div class="col-lg-12 animate-box">
 						<div class="classes">
                                 <div class="desc">
-																				<h1><a href="#"><strong> CARDIO</strong></a>
-                                        <h3><a href="#"> RPM COURSE </a></h3>
+																				<h1><strong> CARDIO</strong>
+                                        <h3>RPM COURSE </h3>
                                         <p> You will ride at the pace of stimulating music and burn as many calories as you can on 20-25 kilometers of varied terrain, controlling the intensity of your effort with the resistance dial and the speed of the pedals.</p>
                                         <h5> <strong> The General  benefits of RPM </strong> </h5>
                                         <p><br>Burn up to 675 calories per course, and increase your metabolism (calories burned at rest).</br>

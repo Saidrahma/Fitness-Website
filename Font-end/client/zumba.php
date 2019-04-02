@@ -135,7 +135,7 @@
 					<div class="col-lg-12 animate-box">
 						<div class="classes">
                                 <div class="desc">
-                                        <h1><a href="#"><strong> Zumba</strong> </a></h1>
+                                        <h1><strong> Zumba</strong></h1>
                                         <?php
 										for($i = 0; $i<count($data); $i++) {
 										if ($data[$i]['nameActivity']=='Zumba'){
