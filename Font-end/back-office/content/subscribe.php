@@ -2,6 +2,16 @@
 <?php 
 include_once "../scripts/callApi.php";
 
+if($_SERVER["REQUEST_METHOD"] == "POST"){
+ 
+  //delete
+  if (!empty(trim($_POST["id"]))) {
+      $idTrainer = array (
+        'idTrainer'=> trim($_POST["id"])
+      );
+      $make_call = callAPI('POST', 'http://localhost:8088/Gym-Website/Back-end/api/controllers/subscribe/delete.php', json_encode($id));
+  } 
+}
 ?>
 
 <div class="content-wrapper">

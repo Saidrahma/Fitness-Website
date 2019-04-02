@@ -10,7 +10,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
       $idMember = array (
         'idMembre'=> trim($_POST["id"])
       );
-      $make_call = callAPI('POST', 'http://localhost/Gym-Website/Back-end/api/controllers/member/delete.php', json_encode($idMember));
+      $make_call = callAPI('POST', 'http://localhost:8088/Gym-Website/Back-end/api/controllers/member/delete.php', json_encode($idMember));
   } 
 }
 ?>
@@ -33,7 +33,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             </thead>
             <tbody>
               <?php
-              $get_data = callAPI('GET','http://localhost/Gym-Website/Back-end/api/controllers/member/read.php', false);
+              $get_data = callAPI('GET','http://localhost:8088/Gym-Website/Back-end/api/controllers/member/read.php', false);
               $response = json_decode($get_data, true);
               $data = $response['records'];
                 foreach($data as $key=>$val){

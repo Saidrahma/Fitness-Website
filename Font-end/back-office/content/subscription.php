@@ -2,6 +2,17 @@
 <?php 
 include_once "../scripts/callApi.php";
 
+if($_SERVER["REQUEST_METHOD"] == "POST"){
+ 
+  //delete
+  if (!empty(trim($_POST["id"]))) {
+      $idSubType = array (
+        'idSubType'=> trim($_POST["id"])
+      );
+      $make_call = callAPI('POST', 'http://localhost:8088/Gym-Website/Back-end/api/controllers/subscription_type/delete.php', json_encode($idSubType));
+  } 
+}
+
 ?>
 
 <div class="content-wrapper">
@@ -22,7 +33,7 @@ include_once "../scripts/callApi.php";
             </thead>
             <tbody>
               <?php
-              $get_data = callAPI('GET','http://localhost/Gym-Website/Back-end/api/controllers/subscription_type/read.php', false);
+              $get_data = callAPI('GET','http://localhost:8088/Gym-Website/Back-end/api/controllers/subscription_type/read.php', false);
               $response = json_decode($get_data, true);
               $data = $response['records'];
                 foreach($data as $key=>$val){
@@ -35,7 +46,9 @@ include_once "../scripts/callApi.php";
 
                 <td> 
                   <button class=" btn btn-info" >Edit</button>/
-                  <button class=" btn btn-info" > Delete </button></td>
+                  <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+                    <button type="submit" name="id" class=" btn btn-info" value=<?php echo $val["idSubType"] ?> > Delete </button></td>
+                  </form>
               </tr>
               <?php  } ?>
             </tbody>
