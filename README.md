@@ -16,4 +16,4 @@ What things you need to install the software and how to install them
 
 ### Back-end
 
-le backend a été utilisé avec AdminLTE pour gérer le CRUD, et on ajouté dashbroad_activity pour afficher les activités "dashbroad_activityType" des membres "dashbroad_membre".
+We used AdminLTE for the CRUD. We have also developed dashbroad_activity to display the activities of members: "dashbroad_activityType" & "dashbroad_membre".
